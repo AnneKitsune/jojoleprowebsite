@@ -10,8 +10,11 @@
             body{
                 text-align:center;
                 overflow-y:scroll;
-                //font:calc(0.75em + 1vmin) monospace;
+                /*font:calc(0.75em + 1vmin) monospace;*/
                 font: 1.3em monospace;
+                background-color: #181a1b;
+                border-color: #575757;
+                color: #e8e6e3;
             }
             pre{
                 text-align:left;
@@ -23,7 +26,13 @@
                 height:auto;
                 width:100%;
             }
-            @media(prefers-color-scheme:dark){
+            a {
+                color: #3391ff;
+            }
+            * {
+                scrollbar-color: #2a2c2e #1c1e1f;
+            }
+            /*@media(prefers-color-scheme:dark){
                 body{
                     background:#000;
                     color:#fff;
@@ -31,7 +40,7 @@
                 a{
                     color:#6CF;
                 }
-            }
+            }*/
         </style>
     </head>
     <body>
