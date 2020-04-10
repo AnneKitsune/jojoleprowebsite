@@ -12,8 +12,11 @@ while read -r page; do
 
     case $page in
         *.txt)
-            sed -E "s|([^=][^\'\"])(https[:]//[^ )]*)|\1<a href='\2'>\2</a>|g" \
-                "../src/$page" |
+            sed "s/</&lt/g" "../src/$page" |
+            sed "s/>/&gt/g" |
+            sed "s/&/&amp/g" |
+
+            sed -E "s|([^=][^\'\"])(https[:]//[^ )]*)|\1<a href='\2'>\2</a>|g" |
 
             sed -E "s|^(https[:]//[^ )]{50})([^ )]*)|<a href='\0'>\1</a>|g" |
 
