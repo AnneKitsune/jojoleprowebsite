@@ -234,9 +234,9 @@ can remove sections of it.
 
 Here, the following request works:
 
-$ curl "https://weather.gc.ca/radar/xhr.php?action=retrieve&amptarget=images"\
-"&ampregion=WUJ&ampproduct=PRECIP_SNOW&amplang=en-CA&ampformat=json" \
--H 'X-Requested-With:XMLHttpRequest' >gt /tmp/data.txt
+$ curl "https://weather.gc.ca/radar/xhr.php?action=retrieve&amp;target=images"\
+"&amp;region=WUJ&amp;product=PRECIP_SNOW&amp;lang=en-CA&amp;format=json" \
+-H 'X-Requested-With:XMLHttpRequest' &gt; /tmp/data.txt
 
 Getting Our Sources
 ================================================================================
@@ -256,7 +256,7 @@ Since those aren't actually urls (they are missing <a href='https://....'>https:
 those.
 
 $ cat /tmp/data.txt | jq -r '.short | map(.src) | .[]' | sed \
-'s/^/https:\/\/weather.gc.ca/' >gt /tmp/urls.txt
+'s/^/https:\/\/weather.gc.ca/' &gt; /tmp/urls.txt
 
 If we look at our file, we see that everything looks good:
 

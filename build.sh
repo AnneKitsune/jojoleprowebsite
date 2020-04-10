@@ -12,9 +12,9 @@ while read -r page; do
 
     case $page in
         *.txt)
-            sed "s/</&lt/g" "../src/$page" |
-            sed "s/>/&gt/g" |
-            sed "s/&/&amp/g" |
+            sed "s/&/\&amp;/g" "../src/$page" |
+            sed "s/</\&lt;/g" |
+            sed "s/>/\&gt;/g" |
 
             sed -E "s|([^=][^\'\"])(https[:]//[^ )]*)|\1<a href='\2'>\2</a>|g" |
 
@@ -25,7 +25,7 @@ while read -r page; do
             sed '/%%CONTENT%%/r /dev/stdin' /tmp/template.html |
             sed '/%%CONTENT%%/d' |
 
-            sed "s	%%SOURCE%%	/${page##./}	" \
+            sed "s|%%SOURCE%%|/${page##./}|" \
                 > "${page%%.txt}.html"
 
             ln -f "../src/$page" "$page"
