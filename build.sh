@@ -33,6 +33,17 @@ while read -r page; do
             printf '%s\n' "CC $page"
         ;;
 
+        *.html)
+            cat "../src/$page" |
+            sed '/%%CONTENT%%/r /dev/stdin' /tmp/template.html |
+            sed '/%%CONTENT%%/d' |
+
+            sed "s|%%SOURCE%%|/${page##./}|" \
+                > "${page%%.html}.html"
+
+            printf '%s\n' "CC $page"
+        ;;
+
         # Copy over any images or non-txt files.
         *)
             cp "../src/$page" "$page"
