@@ -89,7 +89,7 @@ Here's an example of the ~/.newsboat/urls file I use:
 https://k1ss.org/blog/blog.xml
 https://k1ss.org/news/news.xml
 http://feeds.nature.com/nature/rss/current?format=xml
-https://www.youtube.com/feeds/videos.xml?channel_id=<channel id that you want>
+https://www.youtube.com/feeds/videos.xml?channel_id=<channel_id>
 
 Emails/Gmail/Outlook
 --------------------------------------------------------------------------------
