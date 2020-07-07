@@ -1,0 +1,209 @@
+Minimalist Alternatives to Popular Applications
+================================================================================
+
+This blog post will go through some minimalist alternatives to popular
+applications. Most or all application mentionned here as alternatives run on
+linux.
+
+Let's start!
+
+Calendar Applications/Google Calendar/Outlook Calendar
+--------------------------------------------------------------------------------
+
+Calcurse is a beatiful program to manage your appointments, note the
+birthdays of everyone you know and keep track of what you have to do.
+
+Task Lists
+--------------------------------------------------------------------------------
+
+I was using an application called TaskWarrior to keep track of my tasks.
+It is really good and I would recommend it to anyone that needs to track
+a lot of things.
+
+Nowadays, I simply use a text file called todo.txt which I edit in neovim.
+I use the same kind of headers I use for this blog, which you can create using:
+
+80i-<Esc>
+
+which inserts 80 times the "-" character. Overall the text file solution
+is much simpler and portable, but comes at the cost of less features.
+
+If you need to keep a specific order in the tasks you do and need priority
+management, I would suggest using TaskWarrior. Otherwise, a text file is just
+fine.
+
+Drawing Graphs
+--------------------------------------------------------------------------------
+
+For graphs, I use graphviz, which is a collection of different programs that
+create slightly different graphs depending on your needs.
+
+To use it, you create a text file describing the elements of your graph, then
+use one of the programs to convert that text file into an image.
+
+Here's an example of a simplified graph I would use at school:
+
+graph Exercise2 {
+    edge [len = 3];
+    graph [overlap = false];
+
+    /* Objects */
+    advertiser [shape=box,label="Advertiser"];
+    product [shape=box,label="Product"];
+
+    advertiser -- product;
+}
+
+To convert it to a (postscript) image:
+
+neato -Tps entity_model.gv -o entity_model.ps
+
+Of course, it works just fine to create a .png:
+
+neato -Tpng entity_model.gv -o entity_model.png
+
+Music Player/Spotify
+--------------------------------------------------------------------------------
+
+I download all my music, usually from the artist's bandcamp if there's a
+download option.
+
+There's a lot of different options for music players, but I use mpd+mpc on my
+desktop and cmus on my laptop.
+
+I don't know which one I prefer, but they got the job done: They play music and
+I'm not dependant on an external service.
+
+Video Player/Youtube
+--------------------------------------------------------------------------------
+
+I use a combination of newsboat (a RSS/news reader), youtube-dl (downloads
+videos from youtube) and mpv OR mplayer (video players).
+
+newsboat is used instead of youtube's subscription system or interface since
+it prevents me from seeing the recommended section and staying on the platform
+for wayyyy too long.
+
+Here's an example of the ~/.newsboat/urls file I use:
+
+https://k1ss.org/blog/blog.xml
+https://k1ss.org/news/news.xml
+http://feeds.nature.com/nature/rss/current?format=xml
+https://www.youtube.com/feeds/videos.xml?channel_id=<channel id that you want>
+
+Emails/Gmail/Outlook
+--------------------------------------------------------------------------------
+
+I use postfix + dovecot + spamassassin on a scaleway vps as a mailserver.
+I use neomutt as my mail client. (I intend to try aerc soon.)
+
+I would suggest using Luke Smith's mutt wizard program to set things up for
+you more easily.
+
+Powerpoints/Microsoft Office
+--------------------------------------------------------------------------------
+
+I don't actually have to create powerpoints, but if I did I would use
+suckless' sent program.
+You can find it on https://suckless.org
+
+Spreadsheets/Excel
+--------------------------------------------------------------------------------
+
+My needs for spreadsheets is pretty low now that I'm mostly using plain text
+files instead.
+
+The rare times I do need one, I will use sc-im for simple usages or
+libreoffice's calc for complex usages involving graphs.
+
+I should learn gnuplot soon *thinking*.
+
+Image Viewer
+--------------------------------------------------------------------------------
+
+If using a windows manager: sxiv
+If not: fbv (a framebuffer image viewer)
+
+Pdf Reader
+--------------------------------------------------------------------------------
+
+If using a windows manager: zathura
+If not: fbpdf
+
+Text Editor/Code Editor/VS Code/IntelliJ
+--------------------------------------------------------------------------------
+
+neovim all the way. Sorry emacs users ;_;
+
+Password Manager/KeepassX
+--------------------------------------------------------------------------------
+
+For a password manager with a graphical interface, KeepassX does the job
+very well.
+
+Recently I switched to an application called pash, written by Dylan Araps.
+It is very to use and runs in the terminal.
+
+Terminal Emulator
+--------------------------------------------------------------------------------
+
+Suckless Terminal (st). Available on https://suckless.org
+I only use the alpha patch to see my desktop background.
+
+Disk Space Explorer
+--------------------------------------------------------------------------------
+
+ncdu exploring a lot of different folders, du -sh (ships with linux) to get
+the size of some specific folders.
+
+Window Manager
+--------------------------------------------------------------------------------
+
+dwm on my desktop. Also available on the suckless website. :>
+
+On my desktop, I decided that I wanted a really minimal install, so I went
+for a framebuffer-based setup. I'm running tmux inside of a fbpad instance
+and use framebuffer applications (as listed earlier in this post) to view
+images/pdfs/videos.
+
+Bookmark Manager
+--------------------------------------------------------------------------------
+
+A text file is really all you need, to be honest. I tried spreadsheets,
+buku, the firefox built-in bookmark manager, but in the end nothing was as
+simple and efficient as a text file.
+
+Also I just stopped using bookmarks and started "scraping" websites.
+That is, I will download entire websites and keep a copy locally that I can
+browse offline (prevents getting distracted).
+
+The command I use to that effect is:
+
+wget -e robots=off -r --level=0 -nc -np <website url>
+
+For those website that it makes no sense to scrape (like news website), I will
+use newsboat to keep track of it.
+
+Background Image Changer
+--------------------------------------------------------------------------------
+
+feh --bg-scale <image.png>
+
+Conclusion
+================================================================================
+
+If you look hard enough, there's very often a simpler way of doing the things
+you do.
+It may be harder to learn, but there will be less "hidden complexity".
+Complexity that is hidden from you can be both a good and a bad thing.
+You can be more efficient, but when things break down, you lose all ability
+to get meaningful work done.
+
+What happens if there is an internet outage for two days and all your work is
+done online? Nothing at all gets done. Even worse: if you use google drive
+to store all your company's work and for some reason google's storage gets
+destroyed (an unlikely possibility, I agree), you can say hello to bankrupcy.
+
+In the end, whatever applications you use, be sure to keep an open mind and
+make lots of backups in case things go sour.
+

@@ -36,10 +36,7 @@ while read -r page; do
         *.html)
             cat "../src/$page" |
             sed '/%%CONTENT%%/r /dev/stdin' /tmp/template.html |
-            sed '/%%CONTENT%%/d' |
-
-            sed "s|%%SOURCE%%|/${page##./}|" \
-                > "${page%%.html}.html"
+            sed '/%%CONTENT%%/d' > "${page%%.html}.html"
 
             printf '%s\n' "CC $page"
         ;;
