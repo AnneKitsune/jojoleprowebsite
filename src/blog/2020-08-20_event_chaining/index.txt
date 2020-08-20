@@ -34,7 +34,7 @@ Here, I will be specifically exposing a way to reduce coupling in the
 context of
 an Entity Component System (ECS).
 
-Foundamentals
+Fundamentals
 ================================================================================
 
 First of all, let's see the building pieces that we have in a ECS.
