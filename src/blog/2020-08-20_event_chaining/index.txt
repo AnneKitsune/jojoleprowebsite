@@ -12,15 +12,15 @@ input systems.
 This means if we are not careful, we will end up with a user interface that
 works only with a single type of input.
 When you add a new input method (a controller for example), then you have
-to also edit the user interface fonctionality
+to also edit the user interface functionality
 to be able to use this new input device. What is surprising however, is that
 not only do we need to change
 how input works, but also we are modifying user interface code to add a
 device that... probably does the same thing we are already doing.
 
 This situation isn't unique to user interfaces. In fact, this is very often
-how dependencies are modeled.
-It is intuitively what we think of when we think of logical of dependencies. A
+how dependencies are modelled.
+It is intuitively what we think of when we think of logical dependencies. A
 depends on B, thus A refers to B.
 As we have just seen however, it can cause problems of maintainability,
 because we have strong coupling.
@@ -63,16 +63,16 @@ Systems
 
 Systems are what drives the changes in the game. They are functions that
 take data from the ECS context
-(ressources and entity/components), perform some computation and finally
+(resources and entity/components), perform some computation and finally
 modify the ECS context.
 Systems can depend on each other to sequentially perform computation. If
-they don't explicitely
+they don't explicitly
 depend on each other, they will be ordered automatically (and in parallel
 when possible) in a more or less optimal ordering
-depending on how they use ressources or components (whether they read or
+depending on how they use resources or components (whether they read or
 write to them).
-If a system writes to a ressource or component, no other system can access
-this same ressource or component at the same time (in parallel).
+If a system writes to a resource or component, no other system can access
+this same resource or component at the same time (in parallel).
 
 Event Channels
 --------------------------------------------------------------------------------
@@ -125,7 +125,7 @@ message to System B.
 We say that System A is "aware" of System B's existence.
 A way to decouple this is through the use of some method of broadcasting
 the message to anyone who is registered
-to receive it. This is how mailling lists work.
+to receive it. This is how mailing lists work.
 
 Here however, we don't have a list of who should receive each message. Instead,
 each System that wants to receive
@@ -145,12 +145,12 @@ the input system.
 ControllerPadLeft).
 - A Driver (System) converts input Events into user interface Signals
 according to
-a configuration structure stored as a Ressource and other contextual Ressources
+a configuration structure stored as a Resource and other contextual Resources
 (are we inserting text? selecting user interface elements? dragging something?)
 - The User Interface System makes changes using a combination of
 - Signals (Press(x,y), InsertCharacter(char), SelectLeft)
 - ECS Entity and Components (Ui elements, like labels and text fields)
-- Ressources (ScreenSize, SelectedUIElements)
+- Resources (ScreenSize, SelectedUIElements)
 - The User Interface System creates Events based on the changes. For example,
 UiEvent::Clicked(label1_entity).
 
@@ -172,9 +172,8 @@ HashMap lookup or similar.
 
 However, we surprisingly are also getting some performance gains from this. In
 the last example, instead of the
-User Interface System looking each frame for the status (statuses?!) of the
-input device(s), we now have
-this System running only when signals are present.
+User Interface System looking each frame for the status of the
+input device(s), we now have this System running only when signals are present.
 
 Other usages
 ================================================================================
@@ -188,12 +187,12 @@ Asset Hot Reloading
 --------------------------------------------------------------------------------
 
 - A FileWatcher System creates a signal when a file is updated on disk.
-Watched files are configured through a ressource, which could itself
+Watched files are configured through a resource, which could itself
 be loaded from disk and hot reloaded.
 - A FileLoader loads the file from disk (triggered by the signal) and converts
 the data into a shared format.
 (RGBA for images, vector data for svg, vertices for meshes, etc)
-A Signal is then sent created (DataLoaded, DataUpdated, DataDestroyed).
+A Signal is then sent (DataLoaded, DataUpdated, DataDestroyed).
 - An AssetLoader picks up this signal and does some module specific action. For
 example, loading or updating
 a mesh into the GPU memory.
@@ -225,8 +224,8 @@ a raw audio sink.
 Additional Benefit: Configurability
 ================================================================================
 
-In this paper, I mentionned that Drivers can use configuration and context
-data from ECS Ressources.
+In this paper, I mentioned that Drivers can use configuration and context
+data from ECS Resources.
 This allows for a super easy way to configure complex behaviors. Let's
 take input
 as an example. The Input System creates raw events. The Driver converts
@@ -280,7 +279,7 @@ you might have noticed that there are issues when a System that consume Signals
 is paused. When this happens, the System stops consuming the Signals and
 they stay
 in memory forever, causing memory leaks. The solution for this is to store
-the System's ReaderId inside of a Ressource and to nullify/destroy it when the
+the System's ReaderId inside of a Resource and to nullify/destroy it when the
 System gets paused.
 
 Testing! You can test Systems in isolation by manually sending Signals.
@@ -298,7 +297,7 @@ which are both Systems and Event and Signal which are both Events, it can
 be quite confusing without the proper documentation to understand the role
 of each piece of the puzzle.
 Here are some ideas of what to document:
-- The configuration ressources of each System.
+- The configuration resources of each System.
 - The events that each System creates.
 - The signals that each System consumes.
 
