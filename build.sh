@@ -49,3 +49,36 @@ while read -r page; do
         ;;
     esac
 done
+
+echo Building RSS
+
+rss='<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>Jojolepro Blog</title>
+<description>The Blog of the Fockses!</description>
+<link>https://www.jojolepro.com</link>
+<atom:link href="https://www.jojolepro.com/blog/blog.xml" rel="self" type="application/rss+xml"/>'
+
+rss_end="</channel>
+</rss>"
+
+item="<item>
+<title>{{title}}</title>
+<link>https://www.jojolepro.com/blog/{{link}}</link>
+</item>"
+
+echo "$rss" > blog/blog.xml
+
+cat ../src/blog/index.html | grep -v blog.xml | grep -vE "^$" |
+while read -r entry; do
+# <a href="2020-08-20_event_chaining">Event Chaining as a Decoupling Method in ECS Game Engines</a>
+    title1="${entry##*\">}"
+    title="${title1%%<*}"
+    link1="${entry##*=\"}"
+    link="${link1%%\"*}"
+    echo "$item" | sed "s/{{title}}/$title/" | sed "s/{{link}}/$link/" >> blog/blog.xml
+done
+
+echo "$rss_end" >> blog/blog.xml
+
