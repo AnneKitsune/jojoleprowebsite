@@ -3,39 +3,76 @@ List Of Active/Completed Projects
 
 Table Of Content:
 - AltCom.io
-- Cryptocurrency Investing Automation
-- Heart Core
-- Back2Life
-- Hoppin World
-- World Digger Mobile
-- Endless Worlds
-- Scal Engine
+- Astar
 - Amethyst Engine
-- SEECoV.org
-- Easy Colval
-- Drop Your Balls
-- Inventory Managoat
-- Specs-WASM
 - Amethyst-Extra
+- AVX Hasher
+- Back2Life
+- Cryptocurrency Investing Automation
+- Database Hasher
+- Drop Your Balls
+- Easy Colval
+- Endless Worlds
 - Game Features
 - hAlF cApS
-- AVX Hasher
-- Database Hasher
-- WebSocket Actix Receiver
-- Packet Rerouter
 - Half Matrix
+- Heart Core
+- Hoppin World
+- Inventory Managoat
+- Minigene
+- Osu Practice
+- Photon Incremental
+- Laminar Proxy (Packet Rerouter)
+- Partial Function
+- Scal Engine
+- SEECoV.org
+- Specs WASM
+- Specs Declaration
+- Specs Physics
+- Kiss CommandLine Repository
+- WebSocket Actix Receiver
+- Web Workers
+- World Digger Mobile
+- World Digger Ascii
+- World of the Focks God
 
 
 List Of Prototypes
 ================================================================================
 
 Table Of Content:
-- Dash Raid
+- Airplane Incremental
+- Backend Utils
+- Blazing Net
 - Crazy Fall
+- Dash Raid
 - Dyna Maze
-- Taiko-Copy
+- Gravity Balls
+- Key Fall
 - Musi Maze
 - PersonSim
-- Blazing Net
+- Taiko-Copy
+- World Digger Amethyst
+- Image Gen
+- Facebook Friend Bot
+- Operation Mudkir
+- Planet Digger Bot
+- Poker Bot
+- Tower Babel Bot
+- Clicker Strike Globally Overpowered
+- Clicker Strike Globally Overpowered Scala
+- Hurtworld Plugins
+- Lifer
+- SCP EEE
+- Traveller Inc
+- Unity Resources
+- Atmospheres Barrier
+- Ludumdare 42
+- Ludumdare 43
+- Ludumdare 44
+- Spatial Flyer
+- Throw Your Balls Out
+- Ultra Jumper
+- Arduino Projects
 - Dozen of others :)
 
