@@ -114,7 +114,7 @@ No matter the way the page was made, we first need to identify what we want.
 As an example to illustrate what we will be doing, I will be extracting weather
 radar data from a dynamic government website.
 
-https://weather.gc.ca/radar/index_e.html?id=WUJ
+<a href='https://weather.gc.ca/radar/index_e.html?id=WUJ'>https://weather.gc.ca/radar/index_e.html?id=WUJ</a>
 
 I bet the link will eventually cease to work, but in any case, you can follow
 along with any website in the next sections in case this one doesn't work
@@ -259,8 +259,8 @@ $ cat /tmp/data.txt | jq -r '.short | map(.src) | .[]' | sed \
 If we look at our file, we see that everything looks good:
 
 $ cat /tmp/urls.txt
-<a href='https://weather.gc.ca/data/radar/temp_image//WUJ/WUJ_PRECIP_RAIN_2020_03_31_...'>https://weather.gc.ca/data/radar/temp_image//WUJ/WUJ_PRECI</a>
-<a href='https://weather.gc.ca/data/radar/temp_image//WUJ/WUJ_PRECIP_RAIN_2020_03_31_...'>https://weather.gc.ca/data/radar/temp_image//WUJ/WUJ_PRECI</a>
+<a href='https://weather.gc.ca/data/radar/temp_image//WUJ/WUJ_PRECIP_RAIN_2020_03_31_...'>https://weather.gc.ca/data/radar/temp_image//WUJ/WUJ_PRECIP_RAIN_2020_03_31_...</a>
+<a href='https://weather.gc.ca/data/radar/temp_image//WUJ/WUJ_PRECIP_RAIN_2020_03_31_...'>https://weather.gc.ca/data/radar/temp_image//WUJ/WUJ_PRECIP_RAIN_2020_03_31_...</a>
 ....
 
 and finally, we can download our images!

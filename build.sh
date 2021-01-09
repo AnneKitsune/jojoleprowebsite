@@ -18,7 +18,7 @@ while read -r page; do
 
             sed -E "s|([^=][^\'\"])(https[:]//[^ )]*)|\1<a href='\2'>\2</a>|g" |
 
-            sed -E "s|^(https[:]//[^ )]{50})([^ )]*)|<a href='\0'>\1</a>|g" |
+            sed -E "s|^(https[:]//[^ )]{2,71})([^ )]*)|<a href='\0'>\1</a>|g" |
 
             sed -E "s/^\.\/.*\.(png|jpg|svg)/<img src='\0'\/>/g" |
 

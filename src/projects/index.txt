@@ -289,4 +289,3 @@ Images:
 ./shotcaller1.png
 Videos:
 https://github.com/amethyst/shotcaller/blob/master/media/shotcaller-prototype.mp4
-
