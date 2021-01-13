@@ -46,6 +46,9 @@ you buy them at is the final price.
 Game Clock: 5$
 https://git.jojolepro.com/game_clock/
 
+Plank ECS: 10$
+https://git.jojolepro.com/plank_ecs/
+
 Payment
 ================================================================================
 
@@ -95,4 +98,4 @@ A: Listen, we just want people to contribute back. We don't want to spend our
 time and resources on legal issues. Just do the right thing.
 
 Q: I want to join the team/I want to contribute or maintain a project.
-A: Great! Send us an email!
+A: Great! Send us an email at jojolepro [at] jojolepro [dot] com!

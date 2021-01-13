@@ -10,7 +10,7 @@ Plank ECS: A Minimalistic Yet Performant Entity-Component-System Library
 If you already know what an ECS is, jump to the
 "Comparison With Other ECS" section.
 
-The title is a lie. Actually, this is an Entity-Component-Resource-System
+The title is a lie. In reality, this is an Entity-Component-Resource-System
 library.
 
 First, let's start at the beginning.
@@ -20,8 +20,8 @@ An ECS is a way to organise data and modify this data.
 Why not just use regular object oriented code?
 For three reasons:
 1) Using an ECS is often faster.
-2) It uses parallelism to complete the data modification much faster.
-2) It looks much cleaner.
+2) It uses parallelism to complete the data modifications much faster.
+3) It looks much cleaner.
 
 Good!
 
@@ -29,7 +29,7 @@ Now, let's cover the basics.
 
 The Basics
 --------------------------------------------------------------------------------
-You have four main elements.
+We have four main elements.
 
 - Entity: A "thing" that exists in the world. It may be a game character, 
 a map, a button, anything! By itself, an Entity is a thing with no attributes
@@ -103,8 +103,8 @@ How do they get access to the data in World?
 Systems are stored in a Dispatcher. Dispatchers are built from a list of Systems
 and are used to execute Systems either in sequence or in parallel.
 The Dispatcher will fetch resources from the World automatically and execute
-the System in a way guarantees there will not be any conflicts while accessing
-Resources.
+the System in a way that guarantees there will not be any conflicts while
+accessing resources.
 
 To do this, Systems need to be built in a way that corresponds to what the
 Dispatcher can handle.
@@ -187,9 +187,9 @@ Joining Components
 The last part of the puzzle: How to write the example system from earlier
 that modifies the position using the time?
 
-For this, we need to introduce joining. Joining starts by us specifying
+For this, we need to introduce joining. Joining starts with us specifying
 multiple Component types and bitwise conditions. Don't be afraid, this is
-simple. Here is a simple example:
+simple. Here is an example:
 join!(&positions_components && &size_components)
 
 This will create an iterator going through all entities that have both a
@@ -205,7 +205,7 @@ creates an iterator where we only components of entities having the
 following are included: they have (an A AND a B) OR do not have a C.
 The reference to B will be mutable.
 
-Finally, when joining, what you will get is actually:
+Finally, when joining, what you get is actually:
 (&Option<A>, &mut Option<B>, &Option<C>)
 
 The options are always present when joining over multiple components.
@@ -230,15 +230,15 @@ Comparison With Other ECS
 Let's have a quick and informal comparison with other Rust ECS libraries.
 
 First, performance: According to the last time we ran benchmarks, we were the
-faster library when iterating over a single component.
+fastest library when iterating over a single component.
 For other benchmarks, including multiple component joining, entity creation and
 deletion and component insertion, we ranked on average second, behind legion,
 but sometimes being faster on some benchmarks.
 
 Code Size: The complete code size of Plank ECS, including tests and benchmarks, 
 is under 1500 lines.
-For comparison, Specs has 6800 lines of code, legion has 13000, shipyard has
-25000 and Bevy ECS has 5400.
+For comparison, Bevy ECS has 5400 lines of code, Specs has 6800, legion has 13000, shipyard has
+25000.
 
 SystemResult: As far as we know, we are the only ECS where systems return
 errors gracefully in this way.
@@ -249,7 +249,7 @@ systems in a way identical to regular functions.
 
 Tests: We have high standards for tests. Since our code size is small,
 all features and all non-trivial public functions are tested.
-We also benchmarked all performance-sensitive features.
+We also benchmarked all performance-sensitive code.
 
 Safety: We use unsafe code only as an absolute last resort.
 This shows in the numbers. Here's the count of unsafe code snippets found in
@@ -269,7 +269,7 @@ that the AGPL license would be more adequate for it. We want the code to remain
 open source and encourage contributions to come back.
 
 As we know some people want to make use of our product in commercial software,
-we offer a paid commercial license, as an alternative way to contribute back.
+we offer a paid commercial license as an alternative way to contribute back.
 
 Conclusion
 --------------------------------------------------------------------------------
@@ -279,3 +279,5 @@ a better and more safe way.
 
 https://git.jojolepro.com/plank_ecs
 https://docs.rs/plank_ecs
+Part of the Focks Team project.
+https://jojolepro.com/focks/
