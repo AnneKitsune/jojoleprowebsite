@@ -278,3 +278,4 @@ the same thing that the community has been doing for years. It just does it in
 a better and more safe way.
 
 https://git.jojolepro.com/plank_ecs
+https://docs.rs/plank_ecs
