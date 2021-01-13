@@ -1,4 +1,4 @@
-Planks ECS: A Minimalistic Yet Performant Entity-Component-System Library
+Plank ECS: A Minimalistic Yet Performant Entity-Component-System Library
 ================================================================================
 
 +------------------------------------------------------------------------------+
@@ -79,7 +79,7 @@ To make this all work together, we need some more concepts.
 First, the World.
 A World is extremely simplistic: It holds all the entities, components and
 resources.
-Actually, that's how we used to do it. See, Planks ECS follows the minimalist
+Actually, that's how we used to do it. See, Plank ECS follows the minimalist
 mindset. Our World stores only Resources, and everything else has been made a
 Resource. Let's see how that works.
 
@@ -134,7 +134,7 @@ How It Actually Looks
 --------------------------------------------------------------------------------
 Importing the library:
 ```
-use planks_ecs::*;
+use plank_ecs::*;
 ```
 
 Creating an entity:
@@ -235,7 +235,7 @@ For other benchmarks, including multiple component joining, entity creation and
 deletion and component insertion, we ranked on average second, behind legion,
 but sometimes being faster on some benchmarks.
 
-Code Size: The complete code size of Planks ECS, including tests and benchmarks, 
+Code Size: The complete code size of Plank ECS, including tests and benchmarks, 
 is under 1500 lines.
 For comparison, Specs has 6800 lines of code, legion has 13000, shipyard has
 25000 and Bevy ECS has 5400.
@@ -258,7 +258,7 @@ popular ECS libraries:
 - Bevy ECS: 157
 - Legion: 264
 - Shipyard: 312
-- Planks ECS: 4
+- Plank ECS: 4
 
 The numbers speak for themselves.
 
@@ -273,7 +273,8 @@ we offer a paid commercial license, as an alternative way to contribute back.
 
 Conclusion
 --------------------------------------------------------------------------------
-In conclusion, Planks ECS is not an innovative piece of software. It does
+In conclusion, Plank ECS is not an innovative piece of software. It does
 the same thing that the community has been doing for years. It just does it in
 a better and more safe way.
 
+https://git.jojolepro.com/plank_ecs
