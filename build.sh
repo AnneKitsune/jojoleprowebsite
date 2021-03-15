@@ -1,56 +1,12 @@
 #!/bin/sh
 
-rm -r ./build
-mkdir -p ./build
+rm -r ./target
+mkdir -p ./target
 cp ./template.html /tmp/template.html
-cd ./build
+cp ./template.gmi /tmp/template.gmi
 
-(cd ../src; find . -type f -a -not -path \*/\.\* -a -not -path ./templates/\*) |
-
-while read -r page; do
-    mkdir -p "${page%/*}"
-
-    case $page in
-        *.txt)
-            sed "s/&/\&amp;/g" "../src/$page" |
-            sed "s/</\&lt;/g" |
-            sed "s/>/\&gt;/g" |
-
-            sed -E "s|([^=][^\'\"])(https[:]//[^ )]*)|\1<a href='\2'>\2</a>|g" |
-
-            sed -E "s|^(https[:]//[^ )]{2,71})([^ )]*)|<a href='\0'>\1</a>|g" |
-
-            sed -E "s/^\.\/.*\.(png|jpg|svg)/<img src='\0'\/>/g" |
-
-            sed '/%%CONTENT%%/r /dev/stdin' /tmp/template.html |
-            sed '/%%CONTENT%%/d' |
-
-            sed "s|%%SOURCE%%|/${page##./}|" \
-                > "${page%%.txt}.html"
-
-            ln -f "../src/$page" "$page"
-
-            printf '%s\n' "CC $page"
-        ;;
-
-        *.html)
-            cat "../src/$page" |
-            sed '/%%CONTENT%%/r /dev/stdin' /tmp/template.html |
-            sed '/%%CONTENT%%/d' > "${page%%.html}.html"
-
-            printf '%s\n' "CC $page"
-        ;;
-
-        # Copy over any images or non-txt files.
-        *)
-            cp "../src/$page" "$page"
-
-            printf '%s\n' "CP $page"
-        ;;
-    esac
-done
-
-echo Building RSS
+# RSS compilation
+echo "Building RSS"
 
 rss='<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -72,7 +28,6 @@ echo "$rss" > blog/blog.xml
 
 cat ../src/blog/index.html | grep -v blog.xml | grep -vE "^$" |
 while read -r entry; do
-# <a href="2020-08-20_event_chaining">Event Chaining as a Decoupling Method in ECS Game Engines</a>
     title1="${entry##*\">}"
     title="${title1%%<*}"
     link1="${entry##*=\"}"
@@ -81,4 +36,105 @@ while read -r entry; do
 done
 
 echo "$rss_end" >> blog/blog.xml
+
+
+# HTML compilation
+mkdir -p ./target/html
+cd ./target/html
+
+(cd ../../src; find . -type f -a -not -path \*/\.\* -a -not -path ./templates/\*) |
+
+while read -r page; do
+    mkdir -p "${page%/*}"
+
+    case $page in
+        *.txt)
+            sed "s/&/\&amp;/g" "../../src/$page" |
+            sed "s/</\&lt;/g" |
+            sed "s/>/\&gt;/g" |
+            sed '/^#```/d' |
+
+            sed -E "s|([^=][^\'\"])(https[:]//[^ )]*)|\1<a href='\2'>\2</a>|g" |
+
+            sed -E "s|^(https[:]//[^ )]{2,71})([^ )]*)|<a href='\0'>\1</a>|g" |
+
+            sed -E "s/^\.\/.*\.(png|jpg|svg)/<img src='\0'\/>/g" |
+
+            sed '/%%CONTENT%%/r /dev/stdin' /tmp/template.html |
+            sed '/%%CONTENT%%/d' |
+
+            sed "s|%%SOURCE%%|/${page##./}|" \
+                > "${page%%.txt}.html"
+
+            ln -f "../../src/$page" "$page"
+
+            printf '%s\n' "CC $page"
+        ;;
+
+        *.html)
+            cat "../../src/$page" |
+            sed '/%%CONTENT%%/r /dev/stdin' /tmp/template.html |
+            sed '/%%CONTENT%%/d' > "${page%%.html}.html"
+
+            printf '%s\n' "CC $page"
+        ;;
+
+        # Copy over any images or non-txt files.
+        *)
+            cp "../../src/$page" "$page"
+
+            printf '%s\n' "CP $page"
+        ;;
+    esac
+done
+
+# Gemini compilation
+cd ../../
+mkdir -p ./target/gemini
+cd ./target/gemini
+
+(cd ../../src; find . -type f -a -not -path \*/\.\* -a -not -path ./templates/\*) |
+
+while read -r page; do
+    mkdir -p "${page%/*}"
+
+    case $page in
+        *.txt)
+            awk 'BEGIN {lastline="";} /=====/ {lastline="## " lastline;} {if ($0 !~ /=====/) {print lastline; lastline=$0;}} END {print lastline;}' "../../src/$page" |
+            awk 'BEGIN {lastline="";} /-----/ {lastline="### " lastline;} {if ($0 !~ /-----/) {print lastline; lastline=$0;}} END {print lastline;}' |
+            sed 's/^#```/```/' |
+            sed 's/^- /* /' |
+            sed -E "s|([^=][^\'\"])(https[:]//[^ )]*)|\1=>\2|g" |
+
+            sed -E "s|^(https[:]//[^ )]{2,71})([^ )]*)|=>\0|g" |
+
+            sed -E "s/^\.\/.*\.(png|jpg|svg)/=>\0/g" |
+
+            sed '/%%CONTENT%%/r /dev/stdin' /tmp/template.gmi |
+            sed '/%%CONTENT%%/d' |
+
+            sed "s|%%SOURCE%%|/${page##./}|" \
+                > "${page%%.txt}.gmi"
+
+            ln -f "../../src/$page" "$page"
+
+            printf '%s\n' "CC $page"
+        ;;
+
+        #*.html)
+        #    cat "../../src/$page" |
+        #    sed '/%%CONTENT%%/r /dev/stdin' /tmp/template.html |
+        #    sed '/%%CONTENT%%/d' > "${page%%.html}.html"
+
+        #    printf '%s\n' "CC $page"
+        #;;
+
+        # Copy over any images or non-txt files.
+        *)
+            cp "../../src/$page" "$page"
+
+            printf '%s\n' "CP $page"
+        ;;
+    esac
+done
 

@@ -1,0 +1,107 @@
+# Jojolepro
+=> blog Blog
+=> quotes Quotes
+=> projects Projects
+=> https://git.jojolepro.com Git
+=> https://github.com/jojolepro/ GitHub
+
+
+
+## Focks Development Team
+Welcome!
+This is the home page of the Focks Development Team!
+
+We are programmers dedicated to high quality, minimalist software and libraries.
+
+## Values
+* Minimalism: Reduce the number of user-facing api to a maximum.
+* Testing: Every public function is tested.
+* Safety: Usage of unsafe is reserved as a last-resort option only.
+* Learnability: Everything is documented. Examples are available.
+* Compatibility: Compatible and tested with a maximum number of platforms.
+
+## Licensing Choice
+Since making very high quality software takes time, we think it is fair that
+people should give something back.
+
+We consider that giving back can be done in two main ways:
+* Contributing code to the open source community
+* Monetary donations
+
+However, we observed over and over again that people and corporation alike tend
+to avoid giving back to the community. As such, we decided on an hybrid model:
+* Use the AGPL license, so users are strongly encouraged to contribute code
+back.
+* Offer commercial licenses, as a replacement for monetary donations.
+
+Each repository of the focks project contains a file called "AUTHORISED_USERS".
+This file contains the list of people/corporations allowed to *use* the
+library/software in their non-GPL compatible project.
+
+The maintainer of each library has the choice to opt-in this hybrid model and
+decide on the pricing when the project joins the group. By default, only the
+AGPL-3.0 license is used. The maintainer of each library is free to authorise
+any users without payment even under the hybrid model.
+
+## Pricing
+Here is the pricing of commercial licenses for each library that has them.
+All prices are USD and can change over time. Licenses are permanent so the price
+you buy them at is the final price.
+
+Game Clock: 5$
+=>https://git.jojolepro.com/game_clock/
+
+Plank ECS: 10$
+=>https://git.jojolepro.com/plank_ecs/
+
+## Payment
+
+1) Send an email with the list of software/libraries you are buying licenses for
+and the name under which the license will be used
+(your name, username or company name; only one) to
+jojolepro [at] jojolepro [dot] com
+
+2) Make the sum of prices
+3) Send the corresponding amount in bitcoin to this address:
+15NDruDUDr3KaMjt87BvUJaayEzy5c765Z
+4) An invoice will be sent to you within 48 hours. Your name will be added to
+the authorised users list of each project.
+
+If you want to use some other payment processor, contact us!
+
+## FAQ
+Q: I am doing a project under the Apache 2.0/MIT license. Can I use the projects
+without a commercial license?
+A: No, you need a license.
+
+Q: I am doing a project under a GPL-compatible license. Can I use the projects
+without a commercial license?
+A: Yes!
+
+Q: I bought a license to use the projects in my Apache 2.0/MIT library. Are
+users required to also buy a license.
+A: Only if your library exposes publicly the project's api. If your library uses
+the project only internally, users are not required to buy a license.
+
+Q: If I use a focks project with a commercial license in my project, what
+license is it under?
+A: The focks project will still be under AGPL 3.0. The commercial licenses only
+give the right to use the project in non-GPL compatible projects and removes the
+requirement to disclose the source code.
+
+Q: How long are licenses valid?
+A: Forever.
+
+Q: Can commercial licenses be revoked?
+A: Yes, but only if you breached an AGPL term that we didn't give you the
+authorisation to breach. (for example: copyright terms)
+
+Q: This seems all a bit... informal/unclear/open to interpretation.
+A: Listen, we just want people to contribute back. We don't want to spend our
+time and resources on legal issues. Just do the right thing.
+
+Q: I want to join the team/I want to contribute or maintain a project.
+A: Great! Send us an email at jojolepro [at] jojolepro [dot] com!
+
+(C) Joël Lupien 2020-2021
+=>/focks/index.txt View page source

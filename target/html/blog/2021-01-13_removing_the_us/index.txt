@@ -1,0 +1,120 @@
+Getting Rid of The US
+================================================================================
+Or that one time I tried living without access to servers in or owned by
+US-based companies.
+
+We all know that the US has a lot of influence over the world. The same is true
+on the internet. As an experiment, I decided to add block all ip addresses from
+the US, as well as all ip addresses from companies based in the US.
+
+The Method
+--------------------------------------------------------------------------------
+I downloaded the major IP blocks allocated to the US from here:
+https://www.nirsoft.net/countryip/us.csv
+
+Then, I used this list to get the names of the richest (and by extent, likely
+more present on the internet) companies:
+https://en.wikipedia.org/wiki/List_of_largest_companies_by_revenue
+
+Using this list, I used a service called SecurityTrails to get all subdomains
+they own. From there, I got the 200 highest ranked subdomains for each of those
+companies.
+
+Finally, I used an old /etc/hosts file containing domains of ad providers and
+of various suspicious websites.
+
+I combined this old host file with the one containing the subdomains.
+Then, I placed this new file as my /etc/hosts, where all those subdomains point
+to the ip address 0.0.0.0.
+
+As for the ip ranges, I used ip tables.
+First, I made a backup using
+# iptables-save > ~/iptables_bkp
+which can be restored using
+# iptables-restore < ~/iptables_bkp
+
+Then, in you can add all the ip ranges in iptables.
+while IFS="" read -r range; do
+    sudo iptables -I INPUT -s "$range" -j DROP && echo "$range"
+done < ips
+
+First Observations
+--------------------------------------------------------------------------------
+The first thing I observed after applying these changes was that discord, steam,
+github and duckduckgo were still all working.
+
+This is because they have servers that are outside of the US and they weren't
+included in the list of domains we removed. So, I added those to the list of
+subdomains.
+
+This does point out to a systematic issue however: a *ton* of websites and
+services that are US-based have  servers outside of it. Moreover, they rarely
+specify that they are from the US. To find this out, you often need to go into
+their terms of services and search for either their address or mentions
+of the United States. That is, when they have terms of services.
+
+Finally, I took the cloudflare ip addresses from here: 
+https://www.cloudflare.com/ips/
+and removed them. This is the moment the internet broke.
+
+What Works?
+--------------------------------------------------------------------------------
+
+My weather radar still works. This is expected as it fetches data from
+the Canadian government website, which host their things themselves.
+Trying to go to the actual website https://weather.gc.ca, however, will fail.
+That is, until you reload the page. Then, the content will magically appear.
+Each time you change to a new page, you have to reload it to get firefox unstuck
+from whatever it is trying to fetch (mostly google services).
+
+While this website is visible, I would rate it as unusable.
+
+Now, let's check my newsboat. I have a bunch of websites in there, so we'll see
+which ones work. Obviously, youtube will not work.
+Drew DeVault's blog works fine, which is a pleasant surprise.
+Codemadness and dataswamp.org also both seem to work.
+Same with the Kiss Linux blog. Sadly, it has been inactive for a few months.
+The Arch Linux news updates also works.
+
+So, overall, most of my newsfeed, excluding youtube, work.
+
+Next, my emails. I have a mail server in France, so this works just fine too.
+
+The tor browser works fine, which means it could be used to access services that
+can't be accessed otherwise in a 'somewhat protected way'. A bit like wearing
+a condom while entering the... virulent US climate, let's say.
+
+For chatting, discord is out of the question, so I ssh'd into my server and
+booted the matrix server.
+
+..Just to realize that I don't have a matrix client installed.
+However, the good news is that I had non-US mirrors enabled for pacman, which
+means I can just install element-desktop.
+It works!
+
+Now, there are couple more things that need to be checked. Mostly, the things
+related to the school I attend to and the things I need for my work.
+
+First, the school website. It worked on the first try, without any issue.
+Not only is this extremely surprising, but even more surprising is the fact that
+it loads extremely fast compared to the usual.
+Actually, scratch everything I say, because at the second I cleared the browser
+cache, it refused to load.
+Yep, now it's dead for good. Looking in the network tab, I see that it wants to
+load fonts from googleapis.com and load some content from instagram's CDN.
+We really never know what websites can be doing in the background if we don't
+check, heh?
+This will be a job for tor.
+
+Now, concerning my job. I program, rust, which uses libraries hosted on
+crates.io, which itself uses Amazon's aws to store the files. That's a bad
+start, but maybe not the end of the world. I already know how to locally
+download and use those libraries. All I need to do, is fetch the ones I need
+ahead of time, then use them. Except, in practice, that rarely works well.
+I tried self-hosting a part of the libraries, and there were always missing
+ones. This means that not only I would probably need to download and keep
+more of them on a disk, but I would also need to keep downloading the newest
+version of those libraries.
+Also, my work requires me to use github, which is already in the exclusion
+list.
+Ouch!

@@ -1,0 +1,63 @@
+# Jojolepro
+=> blog Blog
+=> quotes Quotes
+=> projects Projects
+=> https://git.jojolepro.com Git
+=> https://github.com/jojolepro/ GitHub
+
+
+
+## I Press Keys on my Keyboard... A Lot
+About Me:
+* Open Source Contributor
+* Game Engine Developer
+* Game Developer
+* Minimalist
+* Avid Lover
+* Gamer
+* Leader of The Focks Cult
+* Tsar of Focksland and Protector of the Fockses
+
+Skills:
+* Game Dev
+* Web Backends
+* Data Mining
+* Linux System Administrator
+* Actually Reads The Fr*ckin Manual
+* Documentation Preparation (groff, excel, etc...)
+* Versatile!
+
+Primary Computer Languages:
+* Rust
+* Scala
+* Java
+* C#
+* C
+
+Game Engine Experience:
+* Amethyst (Core Engine Developer)
+* ScalEngine (Engine Author)
+* Unity
+* JMonkeyEngine
+* LWJGL
+
+## Work
+English CV:
+=>https://jojolepro.com/CVENJoelLupien.pdf
+French  CV: 
+=>https://jojolepro.com/CVFRJoelLupien.pdf
+Portfolio :
+=>https://jojolepro.com/PortfolioJoelLupien.pdf
+
+## Donate
+If you like the work I do, please consider donating on Patreon:
+=>https://patreon.com/jojolepro
+Or by Bitcoin:
+15NDruDUDr3KaMjt87BvUJaayEzy5c765Z
+
+## Contact Me
+In English or French
+mailto: jojolepro [at] jojolepro [dot] com
+
+(C) Joël Lupien 2020-2021
+=>/index.txt View page source

@@ -1,0 +1,116 @@
+# Jojolepro
+=> blog Blog
+=> quotes Quotes
+=> projects Projects
+=> https://git.jojolepro.com Git
+=> https://github.com/jojolepro/ GitHub
+
+
+
+## The Lost of Time
+An opiniated essay on work, desires and autonomy.
+
+
+
+--- Everything together
+* less desires unlocks simplicity. simplicity gives you autonomy and reduces 
+work. autonomy gives you control.
+* if you value yourself, you should value taking care of yourself 
+(where you can!). who's better positioned to take care of you than yourself?
+* if you can't take care of yourself for some things (disabilities), be
+grateful that someone else can.
+* if you can take care of others while still taking care of yourself first, do
+it. we are all human and in this together. we all want to be happy.
+
+### Work
+* we don't have time for ourselves in moderns society
+* specialization, or how to create time.
+* specialization as an economics basis.
+* logically, we should have more time due to specialization, so why isn't it
+case? where did it go? where was it lost?
+
+Do you ever feel like you are doing so so much and are always busy, yet have no
+real control over your life?
+
+If so, congratulations! You are normal!
+
+Society has been and is still going down a route where we trade personal control
+in favor of comfort and ease.
+
+Economically, it makes sense to do so. Specialization is more efficient than
+doing everything yourself. So, it makes sense to give up control over mundane 
+tasks so you can focus on other things taking a lot of time.
+
+Why spend hours each day preparing food, washing clothes and gardening when you
+can have society do it for you and instead put in less hours of work in a 
+specialized job?
+
+From a cold, logical perspective, it makes perfect sense.
+Specialization, under this model, *creates* time.
+
+However, this works because of a few assumptions.
+First of all, you expect that you will always be able to convert your hours of
+work into real, tangible material items or services.
+Secondly, you expect that the hours you put into the specialized job will be
+lower than the hours you would have to put to get what you want.
+Finally, specialization exists primarily for the same reason economics theories 
+exist; because we are trying to resolve a problem of satisfying infinite desires
+with limited resources.
+
+We will explore those in the rest of this essay.
+One final remark before we dive in: If specialization creates time, why do we
+still *feel* like we have less and less of it?
+
+
+### Desires
+* the economy of desires
+* economics, satisfying infinite desires with limited resources
+* the creation of desires, too much desires to satisfy them all
+* having less desires makes it so you can satisfy those that are important
+
+As said in the previous chapter, the economy tries to solve the problem of
+satisfying infinite desires with limited resources.
+
+It does so without changing the conditions of the problem.
+
+Society encourages following your desires. It makes sense, its good for
+business. They get to sell you things. Everything works, kind of, for a while,
+at least until we run out of resources.
+
+I'm not saying we should repress our desires, but that we should choose with
+more care which one we want to pursue.
+Effectively, by not pursuing infinite desires, we are changing the rules of the
+game.
+
+North western society is plagued by an epidemy of desires. Most people want so 
+much things that they can't ever satisfy all of them. Such people keep wanting
+and wanting, which prevents them from being properly happy for what they have.
+
+What has to be done is painfully obvious: focus on your primary desires and stop
+pursuing those that are not worth your time and attention.
+Not doing this has for consequence something affecting society at an
+unprecedented scale: a loss of autonomy.
+
+### Autonomy
+In computer science, there are two very important and simple concepts that
+indicate very strongly the quality of a program.
+Cohesion and coupling.
+Programs are composed of multiple semi-independent units
+
+* coupling and cohesion, two very well known concepts in computer science.
+* giving up power for comfort
+* you can't be fully autonomous, its a best effort and always has been
+* making lists of long term desires
+* making lists of tasks that are in line with your long term desires
+* knowledge, the reward of free time
+* autonomy, the reward of organisation
+* you should ask for help when you need it, but also avoid depending on others
+* simplicity kill efficiency of complexity.
+* simplicity is absolutely awesome for solving problems. (if your problem aren't
+overly complex)
+* stoicism: if you don't have control over it, don't worry about it.
+* stoicism: if you *do* have control and are worrying, plan action.
+* society's services survival is out of your control. your survival is.
+
+(C) Joël Lupien 2020-2021
+=>/blog/2020-09-17_the_lost_of_autonomy/index.txt View page source

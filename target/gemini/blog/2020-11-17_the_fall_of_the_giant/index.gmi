@@ -1,0 +1,56 @@
+# Jojolepro
+=> blog Blog
+=> quotes Quotes
+=> projects Projects
+=> https://git.jojolepro.com Git
+=> https://github.com/jojolepro/ GitHub
+
+
+
+## The Fall of the Giant
+A short story about management, drama and failure.
+
+Amethyst, open source game engine.
+Myself and various other nice people were working on it.
+Then, as we grew, management became a problem. People were getting burnt out,
+no one wanted to do maintenance and everyone wanted to make new features.
+Then, Fletcher came along.
+He wanted to help out.
+He proposed making a non-profit foundation, and he did with the approval of the
+majority.
+A lot of work is getting done, management is managing, things are great
+(except for the extremely high burnout rate).
+Fast forward a year, things aren't great.
+Our pace slows down to a crawl, management isn't managing, developers are
+complaining and slowly losing interest.
+Our refactoring work is massive and takes forever to complete.
+No one wants to do it, except the very few dedicated developers.
+Then the inevitable happened: Bevy engine.
+A brand new engine. It instantly captivated the attention of developers.
+They rushed to it, replicating very quickly the situation that happened at the
+start of Amethyst: lots of people wanting to experiment and add new features.
+As such, Amethyst lost most of its developers and motivation ran low.
+That's when management had an idea. A grand plan, if I might say.
+They gave up. Instead of taking competition as a gate for innovation, they took
+the other route: "If you can't beat 'em, join 'em."
+As such, the Amethyst socials quickly became advertising for various games and
+for the Bevy engine.
+But in the background, something darker was lurking. A deal.
+A secret secret deal.
+The plan: make a for profit company to fund work on an open source game engine.
+Or "open core", as they called it. Whatever this means.
+The weird part about it was that management (of Amethyst) would take the lead
+of this for-profit company, and the main developer of the Bevy engine would get
+the main developer role. Not the people who spent years working on various part
+of the biggest rust game engine. No, the developer of the most *popular* engine
+of the moment would.
+As you might guess, yes, I had a personal problem with this. But I just got
+over it and moved on.
+What I couldn't get over, however, was the fact that no real leadership was
+happening anymore.
+Amethyst had been a wasteland for months, the for-profit company didn't happen,
+the trust in management was gone.
+The Giant had Fallen.
+
+(C) Joël Lupien 2020-2021
+=>/blog/2020-11-17_the_fall_of_the_giant/index.txt View page source

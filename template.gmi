@@ -1,0 +1,11 @@
+# Jojolepro
+=> blog Blog
+=> quotes Quotes
+=> projects Projects
+=> https://git.jojolepro.com Git
+=> https://github.com/jojolepro/ GitHub
+
+%%CONTENT%%
+
+(C) Joël Lupien 2020-2021
+=>%%SOURCE%% View page source

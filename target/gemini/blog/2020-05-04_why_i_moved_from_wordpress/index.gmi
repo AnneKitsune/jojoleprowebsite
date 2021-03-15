@@ -1,0 +1,51 @@
+# Jojolepro
+=> blog Blog
+=> quotes Quotes
+=> projects Projects
+=> https://git.jojolepro.com Git
+=> https://github.com/jojolepro/ GitHub
+
+
+
+## Why I Moved From Wordpress
+
+As some of you might have noticed, I moved away from wordpress and instead
+created this plaintext website.
+
+It might seem like an odd choice (and it is), but I have some reasons for this.
+
+### No Maintenance
+
+Having a plaintext website requires no maintenance. I write something,
+upload the files and I'm done.
+All I need is a text editor and ssh (or ftp).
+
+What can break? The SSL certificate or the domain name can expire. That's it.
+
+What can break with wordpress? All of the above plus:
+* Php version change during updates
+* Random new vulnerabilities
+* Automatic updates can fail
+
+### Speed
+
+Plaintext faster than php.
+
+### Writing
+
+It is much easier to write in plaintext than to try to format things properly
+in a web editor.
+
+### Source Control
+
+* The code is small and easy to understand. No surprises here.
+* I can use git to make backups of the website. No need for databases!
+
+### Style
+
+I'm not very good at styling and I can't be bothered to spend hours making
+everything look good. Also, I just like the style of plaintext. <3
+
+
+(C) Joël Lupien 2020-2021
+=>/blog/2020-05-04_why_i_moved_from_wordpress/index.txt View page source
