@@ -82,14 +82,20 @@ to the ip address 0.0.0.0.
 
 As for the ip ranges, I used ip tables.
 First, I made a backup using
+```
 # iptables-save &gt; ~/iptables_bkp
+```
 which can be restored using
+```
 # iptables-restore &lt; ~/iptables_bkp
+```
 
 Then, in you can add all the ip ranges in iptables.
+```
 while IFS="" read -r range; do
     sudo iptables -I INPUT -s "$range" -j DROP &amp;&amp; echo "$range"
 done &lt; ips
+```
 
 First Observations
 --------------------------------------------------------------------------------
@@ -115,7 +121,9 @@ What Works?
 
 My weather radar still works. This is expected as it fetches data from
 the Canadian government website, which host their things themselves.
-Trying to go to the actual website <a href='https://weather.gc.ca,'>https://weather.gc.ca,</a> however, will fail.
+Trying to go to the actual website
+<a href='https://weather.gc.ca'>https://weather.gc.ca</a>
+, however, will fail.
 That is, until you reload the page. Then, the content will magically appear.
 Each time you change to a new page, you have to reload it to get firefox unstuck
 from whatever it is trying to fetch (mostly google services).
@@ -129,7 +137,7 @@ Codemadness and dataswamp.org also both seem to work.
 Same with the Kiss Linux blog. Sadly, it has been inactive for a few months.
 The Arch Linux news updates also works.
 
-So, overall, most of my newsfeed, excluding youtube, work.
+So, overall, most of my newsfeed, excluding youtube, works.
 
 Next, my emails. I have a mail server in France, so this works just fine too.
 
@@ -171,6 +179,10 @@ version of those libraries.
 Also, my work requires me to use github, which is already in the exclusion
 list.
 Ouch!
+
+Conclusion
+================================================================================
+Fun experiment, but not very useful except or practical at all.
             </pre>
         </article>
         <br/>
