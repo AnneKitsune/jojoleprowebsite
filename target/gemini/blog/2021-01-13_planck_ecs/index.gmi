@@ -8,6 +8,8 @@
 
 
 ## Planck ECS: A Minimalistic Yet Performant Entity-Component-System Library
+=>https://github.com/jojolepro/planck_ecs
+=>https://docs.rs/planck_ecs
 
 ### #```
 |       "Perfection is achieved, not when there is nothing more to add,        |
