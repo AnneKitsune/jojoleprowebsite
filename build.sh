@@ -24,18 +24,18 @@ item="<item>
 <link>https://www.jojolepro.com/blog/{{link}}</link>
 </item>"
 
-echo "$rss" > blog/blog.xml
+echo "$rss" > src/blog/blog.xml
 
-cat ../src/blog/index.html | grep -v blog.xml | grep -vE "^$" |
+cat src/blog/index.html | grep -v blog.xml | grep -vE "^$" |
 while read -r entry; do
     title1="${entry##*\">}"
     title="${title1%%<*}"
     link1="${entry##*=\"}"
     link="${link1%%\"*}"
-    echo "$item" | sed "s/{{title}}/$title/" | sed "s/{{link}}/$link/" >> blog/blog.xml
+    echo "$item" | sed "s/{{title}}/$title/" | sed "s/{{link}}/$link/" >> src/blog/blog.xml
 done
 
-echo "$rss_end" >> blog/blog.xml
+echo "$rss_end" >> src/blog/blog.xml
 
 
 # HTML compilation

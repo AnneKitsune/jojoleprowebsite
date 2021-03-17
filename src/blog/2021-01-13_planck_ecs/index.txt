@@ -1,64 +1,13 @@
-<!doctype html>
-<html lang=en>
-    <head>
-        <link href='data:image/png;base64,R0lGODlhGAAYAOeIAAAAALVSwLlUxLxXyLlZxMlb1cpc1hScoRSepNBf3c9h29Rg4NJh39Nh4BWhps9j3NJi3s1k2dVh4tBk3NVi4tNj39Zi49di49di5NBl3NVj4tNk39hi5dZj49Zj5Nli5dRk4ddj5NVk4thj5dti5tNl4Nhj5tZk49Fm3tlj5dRl4Nlj5tdk49dk5Npj5ddk5dVl4dhk5dZl49lk5tdl5dpk5tZm49Nn5NVn4tVn5dZn49Ro4Nlm5tNo5ddn5NBq29Vo4dVo4haortln5dRp4Ndo49Zp49Nq5Raqr9pp59hr5NFu5Nls5s1y5BevtBawtcp25BizuRi1uhm4vi20wbqG4hm7wRq8whm9w7yI4raM4Bq/xRq/xrSO4RrByBrDyRvDyhvFyxvGzBvHzRvHzqeb4BvIzhvIzxzIzxvJz6ad4CTH0aKf3xzK0BzK0RzL0p6i3xzN1BzP1R3P1pGr3h3Q15Or3RzR2CPP2R3R2B3R2R/R2RzS2R3S2SfP2Yex3Yey3TPN2TbN2Xm43DDP2Xa63EXK2kbK2v///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////yH+B2hhaSBoYWkAIfkEAQoA/wAsAAAAABgAGAAACP4A/wkcSLCgwYMFASgEgLDhQiFWrkxZ2JAgACl58vTZuDGPwor/ALzhyFEMmI1uGCIEUKfPHABkODoAMGZjHZUJ02wEEAUARwBofNrEOVBoH5EAzuyMA0Djxi9EAXD5mWdOS5JYo2Ld+pNjGpUAEGwVmrLPlqMkwSLhCgAqAgAHjG40wxCAE656ADzBQwWAHz5ZQ2LhashOlR4uSOToAkjQz5BesB5ic4QHiyQyiFiokQJKoZ8ATnIctCQGBCYqRHjYoWPIihUvyhA6CiDMxj10aFhI8MBGhghBZnTg8fp1FkIKa/aBk2LFhQUlbOAoooHDiRbFX2tR2EbPnw+vR0NMMAJEAQwQFBpoCDFCgoCFAOQEapJ9Q5EKDFCUKPKDAPyid6hhQnZK+GDAAPARVdQaN7yGQQEB/AdSSAlOaOGFAgUEADs=' 
-        rel=icon>
-        <title>Jojolepro.com</title>
-        <meta charset=utf-8>
-        <meta name=description content="A bunch of stuff and things!">
-        <style>
-            body{
-                text-align:center;
-                overflow-y:scroll;
-                /*font:calc(0.75em + 1vmin) monospace;*/
-                font: 1.3em monospace;
-                background-color: #181a1b;
-                border-color: #575757;
-                color: #e8e6e3;
-            }
-            pre{
-                text-align:left;
-                display:inline-block;
-            }
-            img{
-                max-width:80ch;
-                display:block;
-                height:auto;
-                width:100%;
-            }
-            nav a {
-                margin-right: 1ch;
-            }
-            a {
-                color: #3391ff;
-            }
-            * {
-                scrollbar-color: #2a2c2e #1c1e1f;
-            }
-        </style>
-    </head>
-    <body>
-        <nav>
-            <a href=/><b>Jojolepro</b></a>
-            <br/>
-            <a href=/blog>Blog</a>
-            <a href=/quotes>Quotes</a>
-            <a href=/projects>Projects</a>
-            <!--<a href=/focks>Focks</a>-->
-            <a href=https://git.jojolepro.com>Git</a>
-            <a href=https://github.com/jojolepro/>GitHub</a>
-        </nav>
-        <br/>
-        <article>
-            <pre>
-Plank ECS: A Minimalistic Yet Performant Entity-Component-System Library
+Planck ECS: A Minimalistic Yet Performant Entity-Component-System Library
 ================================================================================
 
+#```
 +------------------------------------------------------------------------------+
 |       "Perfection is achieved, not when there is nothing more to add,        |
 |                but when there is nothing left to take away."                 |
 |                       - Antoine de Saint-Exupery, 1900                       |
 +------------------------------------------------------------------------------+
+#```
 
 If you already know what an ECS is, jump to the
 "Comparison With Other ECS" section.
@@ -120,7 +69,7 @@ Resources:
 - Time(current_time)
 
 System:
-- if current_time &gt; 5 seconds, then move all entities' Position left by 3 units.
+- if current_time > 5 seconds, then move all entities' Position left by 3 units.
 
 We have a simple system that conditionally modifies the Position component
 of all entities having one.
@@ -132,20 +81,20 @@ To make this all work together, we need some more concepts.
 First, the World.
 A World is extremely simplistic: It holds all the entities, components and
 resources.
-Actually, that's how we used to do it. See, Plank ECS follows the minimalist
+Actually, that's how we used to do it. See, Planck ECS follows the minimalist
 mindset. Our World stores only Resources, and everything else has been made a
 Resource. Let's see how that works.
 
 For Entity, we store them in an Entities Resource. Simply a list of existing
 entities, with some extra operations to create and kill entities.
 
-For Component, we store them in a Components&lt;T&gt; Resource. Similar to Entities,
+For Component, we store them in a Components<T> Resource. Similar to Entities,
 it is a list. The main difference is that you access components using an Entity.
 
 A good way to think of it, even though it is not implemented this way,
 is as the following:
 Entities: List(Entity)
-Components&lt;T&gt;: HashMap(Entity, T)
+Components<T>: HashMap(Entity, T)
 
 Now, we have a way to contain entities, components and resources: the world.
 What are we forgetting? Ah yes, the systems!
@@ -169,7 +118,7 @@ These are the constraints that specify how systems may be built:
 1) Systems must take only references as arguments.
 
 2) All mutable references must be after all immutable references.
-For example: fn my_system(first: &amp;u32, second: &amp;u64, third: &amp;mut u16)
+For example: fn my_system(first: &u32, second: &u64, third: &mut u16)
 This constraint is attributable to the way traits are implemented for generic
 types in rust. Removing this constraint would make the build time factorial,
 which would effectively never complete.
@@ -178,7 +127,7 @@ which would effectively never complete.
 recover from errors in systems.
 
 4) System arguments must implement Default. If they don't, then you need to use
-&amp;Option&lt;WhatYouWant&gt; instead of directly using &amp;WhatYouWant.
+&Option<WhatYouWant> instead of directly using &WhatYouWant.
 This constraint exists so that resources may be automatically created for you,
 as well as enforcing that any resource that might not exist is actually handled
 by the system without any issue.
@@ -187,7 +136,7 @@ How It Actually Looks
 --------------------------------------------------------------------------------
 Importing the library:
 ```
-use plank_ecs::*;
+use planck_ecs::*;
 ```
 
 Creating an entity:
@@ -211,25 +160,25 @@ let mut world = World::default();
 
 Creating a system:
 ```
-fn my_system(value: &amp;Components&lt;A&gt;) -&gt; SystemResult {
+fn my_system(value: &Components<A>) -> SystemResult {
     Ok(())
 }
 ```
 
 Creating a system as a closure:
 ```
-let my_system = |value: &amp;Components&lt;A&gt;| Ok(());
+let my_system = |value: &Components<A>| Ok(());
 ```
 
 Creating and using a dispatcher:
 ```
 let dispatcher = DispatcherBuilder::default()
     .add(my_system)
-    .build(&amp;mut world);
+    .build(&mut world);
 // Run without parallelism.
-dispatcher.run_seq(&amp;mut world).expect("Error in a system!");
+dispatcher.run_seq(&mut world).expect("Error in a system!");
 // Run in parallel.
-dispatcher.run_par(&amp;mut world).expect("Error in a system!");
+dispatcher.run_par(&mut world).expect("Error in a system!");
 
 // Does some cleanup related to deleted entities.
 world.maintain();
@@ -243,34 +192,34 @@ that modifies the position using the time?
 For this, we need to introduce joining. Joining starts with us specifying
 multiple Component types and bitwise conditions. Don't be afraid, this is
 simple. Here is an example:
-join!(&amp;positions_components &amp;&amp; &amp;size_components)
+join!(&positions_components && &size_components)
 
 This will create an iterator going through all entities that have both a
-Position component AND a Size component. If you use &amp;mut instead of &amp;, then you
+Position component AND a Size component. If you use &mut instead of &, then you
 will get a mutable reference to the component in question.
 
-The join macro supports the following operators: &amp;&amp; || !
+The join macro supports the following operators: && || !
 Those work as you would expect, with the caveat that operators are strictly read
 from left to right.
 For example,
-join!(&amp;a &amp;&amp; &amp;mut b || !&amp;c)
+join!(&a && &mut b || !&c)
 creates an iterator where we only components of entities having the
 following are included: they have (an A AND a B) OR do not have a C.
 The reference to B will be mutable.
 
 Finally, when joining, what you get is actually:
-(&amp;Option&lt;A&gt;, &amp;mut Option&lt;B&gt;, &amp;Option&lt;C&gt;)
+(&Option<A>, &mut Option<B>, &Option<C>)
 
 The options are always present when joining over multiple components.
 
 Together:
 ```
-fn position_update_if_time(time: &amp;Time, sizes: &amp;Components&lt;Size&gt;, 
-    positions: &amp;mut Components&lt;Position&gt;) -&gt; SystemResult {
-    if time.current_time &gt;= 5 {
+fn position_update_if_time(time: &Time, sizes: &Components<Size>, 
+    positions: &mut Components<Position>) -> SystemResult {
+    if time.current_time >= 5 {
         // Iterate over entities having both position and size, but updates
         // only the position component.
-        for (pos, _) in join!(&amp;mut positions &amp;&amp; &amp;size) {
+        for (pos, _) in join!(&mut positions && &size) {
             pos.as_mut().unwrap().x -= 3;
         }
     }
@@ -288,10 +237,12 @@ For other benchmarks, including multiple component joining, entity creation and
 deletion and component insertion, we ranked on average second, behind legion,
 but sometimes being faster on some benchmarks.
 
-Code Size: The complete code size of Plank ECS, including tests and benchmarks, 
+https://github.com/jojolepro/ecs_bench_suite/tree/planck
+
+Code Size: The complete code size of Planck ECS, including tests and benchmarks, 
 is under 1500 lines.
-For comparison, Bevy ECS has 5400 lines of code, Specs has 6800, legion has 13000, shipyard has
-25000.
+For comparison, Bevy ECS has 5400 lines of code, Specs has 6800, legion has 
+13000 and shipyard has 25000.
 
 SystemResult: As far as we know, we are the only ECS where systems return
 errors gracefully in this way.
@@ -311,37 +262,23 @@ popular ECS libraries:
 - Bevy ECS: 157
 - Legion: 264
 - Shipyard: 312
-- Plank ECS: 4
+- Planck ECS: 4
 
 The numbers speak for themselves.
 
 Licensing
 --------------------------------------------------------------------------------
-Because of the quality and the time spent on this library, it was decided
-that the AGPL license would be more adequate for it. We want the code to remain
-open source and encourage contributions to come back.
-
-As we know some people want to make use of our product in commercial software,
-we offer a paid commercial license as an alternative way to contribute back.
+Published under CC0, Planck ECS is under the public domain and available for
+free!
 
 Conclusion
 --------------------------------------------------------------------------------
-In conclusion, Plank ECS is not an innovative piece of software. It does
+In conclusion, Planck ECS is not an innovative piece of software. It does
 the same thing that the community has been doing for years. It just does it in
 a better and more safe way.
 
-<a href='https://git.jojolepro.com/plank_ecs'>https://git.jojolepro.com/plank_ecs</a>
-<a href='https://docs.rs/plank_ecs'>https://docs.rs/plank_ecs</a>
-Part of the Focks Team project.
-<a href='https://jojolepro.com/focks/'>https://jojolepro.com/focks/</a>
-            </pre>
-        </article>
-        <br/>
-        <footer>
-            <div>
-                (C) Joël Lupien 2020-2021
-            </div>
-            <a href="/blog/2021-01-13_planks_ecs/index.txt">View page source</a>
-        </footer>
-    </body>
-</html>
+If you like this library, please consider donating on patreon:
+https://patreon.com/jojolepro
+
+https://github.com/jojolepro/planck_ecs
+https://docs.rs/planck_ecs

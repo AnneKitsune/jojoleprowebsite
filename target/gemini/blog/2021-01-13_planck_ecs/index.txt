@@ -1,4 +1,4 @@
-Plank ECS: A Minimalistic Yet Performant Entity-Component-System Library
+Planck ECS: A Minimalistic Yet Performant Entity-Component-System Library
 ================================================================================
 
 #```
@@ -81,7 +81,7 @@ To make this all work together, we need some more concepts.
 First, the World.
 A World is extremely simplistic: It holds all the entities, components and
 resources.
-Actually, that's how we used to do it. See, Plank ECS follows the minimalist
+Actually, that's how we used to do it. See, Planck ECS follows the minimalist
 mindset. Our World stores only Resources, and everything else has been made a
 Resource. Let's see how that works.
 
@@ -136,7 +136,7 @@ How It Actually Looks
 --------------------------------------------------------------------------------
 Importing the library:
 ```
-use plank_ecs::*;
+use planck_ecs::*;
 ```
 
 Creating an entity:
@@ -237,10 +237,12 @@ For other benchmarks, including multiple component joining, entity creation and
 deletion and component insertion, we ranked on average second, behind legion,
 but sometimes being faster on some benchmarks.
 
-Code Size: The complete code size of Plank ECS, including tests and benchmarks, 
+https://github.com/jojolepro/ecs_bench_suite/tree/planck
+
+Code Size: The complete code size of Planck ECS, including tests and benchmarks, 
 is under 1500 lines.
-For comparison, Bevy ECS has 5400 lines of code, Specs has 6800, legion has 13000, shipyard has
-25000.
+For comparison, Bevy ECS has 5400 lines of code, Specs has 6800, legion has 
+13000 and shipyard has 25000.
 
 SystemResult: As far as we know, we are the only ECS where systems return
 errors gracefully in this way.
@@ -260,26 +262,23 @@ popular ECS libraries:
 - Bevy ECS: 157
 - Legion: 264
 - Shipyard: 312
-- Plank ECS: 4
+- Planck ECS: 4
 
 The numbers speak for themselves.
 
 Licensing
 --------------------------------------------------------------------------------
-Because of the quality and the time spent on this library, it was decided
-that the AGPL license would be more adequate for it. We want the code to remain
-open source and encourage contributions to come back.
-
-As we know some people want to make use of our product in commercial software,
-we offer a paid commercial license as an alternative way to contribute back.
+Published under CC0, Planck ECS is under the public domain and available for
+free!
 
 Conclusion
 --------------------------------------------------------------------------------
-In conclusion, Plank ECS is not an innovative piece of software. It does
+In conclusion, Planck ECS is not an innovative piece of software. It does
 the same thing that the community has been doing for years. It just does it in
 a better and more safe way.
 
-https://git.jojolepro.com/plank_ecs
-https://docs.rs/plank_ecs
-Part of the Focks Team project.
-https://jojolepro.com/focks/
+If you like this library, please consider donating on patreon:
+https://patreon.com/jojolepro
+
+https://github.com/jojolepro/planck_ecs
+https://docs.rs/planck_ecs

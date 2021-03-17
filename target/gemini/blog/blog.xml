@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>Jojolepro Blog</title>
+<description>The Blog of the Fockses!</description>
+<link>https://www.jojolepro.com</link>
+<atom:link href="https://www.jojolepro.com/blog/blog.xml" rel="self" type="application/rss+xml"/>
+<item>
+<title>Removing the US</title>
+<link>https://www.jojolepro.com/blog/2021-01-13_removing_the_us</link>
+</item>
+<item>
+<title>Planck: A Minimalistic Yet Performant ECS Library</title>
+<link>https://www.jojolepro.com/blog/2021-01-13_planck_ecs</link>
+</item>
+<item>
+<title>The Fall of the Giant</title>
+<link>https://www.jojolepro.com/blog/2020-11-17_the_fall_of_the_giant</link>
+</item>
+<item>
+<title>Event Chaining as a Decoupling Method in ECS Game Engines</title>
+<link>https://www.jojolepro.com/blog/2020-08-20_event_chaining</link>
+</item>
+<item>
+<title>Minimalist Alternatives to Popular Applications</title>
+<link>https://www.jojolepro.com/blog/2020-07-07_minimalist_alternatives</link>
+</item>
+<item>
+<title>Why I Moved Away From Wordpress</title>
+<link>https://www.jojolepro.com/blog/2020-05-04_why_i_moved_from_wordpress</link>
+</item>
+<item>
+<title>Simple School Documents</title>
+<link>https://www.jojolepro.com/blog/2020-04-09_simple_school_documents</link>
+</item>
+<item>
+<title>Extracting Data From Websites</title>
+<link>https://www.jojolepro.com/blog/2020-03-31_extracting_data_from_websites</link>
+</item>
+</channel>
+</rss>
