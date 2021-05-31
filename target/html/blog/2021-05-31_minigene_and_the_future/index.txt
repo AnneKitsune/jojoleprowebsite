@@ -342,6 +342,8 @@ ecosystem as a whole!
 
 https://patreon.com/jojolepro
 
+./patreon.png
+
 Contributing Code/Unit Tests
 --------------------------------------------------------------------------------
 There are multiple ways to contribute code.
