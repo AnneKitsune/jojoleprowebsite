@@ -397,3 +397,6 @@ https://discord.gg/gb2wENz
 Amethyst and Shotcaller:
 - On Discord:
 https://discord.gg/amethyst
+
+Follow the blog using RSS!
+https://jojolepro.com/blog/blog.xml
