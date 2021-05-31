@@ -11,7 +11,7 @@ coming in the future!
 Minigene
 ================================================================================
 Minigene is a new game engine. It is meant to fill the empty space between
-indie game development and professionnal game development.
+indie game development and professional game development.
 
 https://github.com/jojolepro/minigene
 
@@ -35,7 +35,7 @@ many small and specialized crates. For instance, one crate for i18n, one crate
 for game inventory and item management, etc...
 https://github.com/jojolepro/game_features
 
-This layer also include crates which aren't "game features" but are
+This layer also includes crates which aren't "game features" but are
 "engine features".
 For instance, the crate game_engine_core gives us a structure in which we can
 run our game logic using global states.
@@ -62,7 +62,7 @@ For instance, we can have a planck_game_features crate that creates Systems
 which execute game_features update functions using Components coming from
 Planck's World structure.
 
-Now, layer 3 is simply minigene, the crate. It re-export a bunch of layer 2
+Now, layer 3 is simply minigene, the crate. It re-exports a bunch of layer 2
 crates into a convenient package. To avoid importing a billion crates when using
 minigene, we place the different features into groups and hide them behind
 feature gates.
@@ -80,7 +80,7 @@ It will also import some crates that are specific to the needs of the game.
 Here's how it will look in practice:
 https://www.figma.com/file/cv7orWvUWfB6teK7RLqu3L/The-New-Amethyst?node-id=0%3A1
 
-Quite the mess, I know, but it is the cleanest graph of a full detailed game
+Quite the mess, I know, but it is the cleanest graph of a full game
 engine that I have ever seen. I'll let you imagine how horrible it is for
 engines which are not aiming to have small dependencies!
 
@@ -95,7 +95,7 @@ extensively here:
 https://jojolepro.com/blog/2020-08-20_event_chaining/
 
 In short, it allows to drive the execution of systems using events and to
-creates events from past events. Here is a quick example:
+create events from past events. Here is a quick example:
 <bracket-lib event>::char(x) -> InputEvent::KeyPress(x) -> GameEvent::Jump
 -> NetworkedAction::PlayerJump(auth_id) -> NetworkEvent::PlayerJumped(entity_id)
 
@@ -131,8 +131,8 @@ a few of them.
 - Integrate planck_ecs_bundle
 - Create bundle with game_features related systems (planck_game_features crate)
 - Move code (when applicable) from minigene systems to game_features
-- Integrate a 2d renderer to emulate terminal rendering
-- Integrate a 2d renderer to render sprites in any position, shape or rotation.
+- Integrate a 2D renderer to emulate terminal rendering
+- Integrate a 2D renderer to render sprites in any position, shape or rotation.
 - Choose a math crate that will be used as the base on which we build other
     crates.
 - Mobile device support (high priority!)
@@ -146,6 +146,10 @@ It is built on minigene and was the reason the engine was created in the first
 place. Development of this game is currently on hold until more funds are
 available.
 
+Interestingly, we actually run Minigene inside of the bracket-lib engine.
+Bracket-lib drives the execution, either through its own event loop or
+through web assembly, and then calls Minigene's Engine::engine_frame function.
+
 The game can be tested using:
 ```
 git clone https://github.com/amethyst/shotcaller
@@ -153,9 +157,9 @@ cd shotcaller
 git checkout ac07a7bfb4224e8af4bd43e6df3afcaa879d4a48
 ```
 
-In the case that this does not work, there is also an online version:
+In the case this doesn't work, there is also an online version:
 https://shotcaller.jojolepro.com/
-This version quite a bit older, however.
+This version is quite a bit older, however.
 
 Desktop Version:
 ./shotcaller.png
@@ -185,10 +189,10 @@ character, experience, skills and items. When you create a new character, you
 will appear in a random location in the giant world, with no indication of
 where you are until you find a map.
 
-The reason for this is two fold:
+The reason for this is twofold:
 - We want to encourage players to cooperate and for this to happen we need to
 discourage attacking other players. Since the downside to dying is so high,
-attacking players is a risky gamble that not many players would risk to taking.
+attacking players is a risky gamble that not many players would risk taking.
 - Players should be more likely to cooperate with others and should avoid
 fighting others in most cases.
 
@@ -201,7 +205,7 @@ food in real life, and come back to a brand new chestplate.
 The time it takes to make something will depend on its rarity and level.
 Some items will take 5 seconds to craft, while the best items will take 24
 hours. Crafting recipes are pausable, so you could craft one of those
-longer recipe over multiple nights while still actively playing during the day.
+longer recipes over multiple nights while still actively playing during the day.
 
 Kind of related to this, the game aims to be strategic and gives you some time
 to think about your actions. Game updates happen every 5 seconds. This means
@@ -271,21 +275,23 @@ future blog posts.
 
 Amethyst
 ================================================================================
-I recently joined the Board of Director of the Amethyst Foundation!
-All this mean is that is that now I'm in charge of getting the engine back
+./amethyst.png
+
+I recently joined the Board of Director of the Amethyst Game Engine Foundation!
+All that means is that is that now I'm in charge of getting the engine back
 on track.
 
 There are a couple ways to do that, so let's start with what we can do
 RIGHT NOW.
 
-First of all, we are making all issues "actionnable". What I mean by this is
-that we will ensure that all github issues have a list of task that, once
+First of all, we are making all issues "actionable". What I mean by this is
+that we will ensure that all Github issues have a list of tasks that, once
 completed, will lead to the issue being closed.
 
 This is to make it easy for contributors to understand what they have to do.
 It also makes it easy to know which issues we have to close: Issues that have
-no clear way to get solved get closed and discussion is encouraged in the RFC
-process to come up with a solution there.
+no clear way of getting solved get closed and discussion is encouraged in the
+RFC process to come up with a solution there.
 
 Secondly, Amethyst 0.16.0 NEEDS to be released. The only remaining task to get
 there is to update the book with new information concerning the legion port and
@@ -293,7 +299,7 @@ update the code examples.
 
 Finally, I have made a longer term list of tasks to improve the engine and also
 time estimations of the work:
-- Make all issues actionnable (4h)
+- Make all issues actionable (4h)
 - Fix book for legion port (10h)
 - Add test_all.sh script and release.sh script (with places to check everything is fine) (4h)
 - Publish 0.16 (2h)
@@ -329,7 +335,7 @@ Wew! This was a long blog post! Still here? Good!
 
 We need your help! *I* need your help!
 
-There are a lots of ways you can help, even if you are not familiar with
+There are a lot of ways you can help, even if you are not familiar with
 programming and even if you didn't read the blog post at all!
 
 Donating on Patreon
@@ -352,7 +358,7 @@ In the case of Amethyst and Minigene, it can be as simple as taking layer 1 code
 (features) and layer 2 code (Entity Component System systems) and moving them to
 small crates.
 
-In the case of WOTFG and Shotcaller, you can open pull request with features
+In the case of WOTFG and Shotcaller, you can open pull requests with features
 that you want. Before doing that, it is always a good idea to contact us
 to know what is most needed and if your feature is something that would fit well
 with the game concepts.
