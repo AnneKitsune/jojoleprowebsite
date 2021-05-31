@@ -393,5 +393,11 @@ Amethyst and Shotcaller:
 * On Discord:
 =>https://discord.gg/amethyst
 
+Follow the blog using RSS!
+=>https://jojolepro.com/blog/blog.xml
+
+As a final note, I'm currently looking for a job. Feel free to contact me if
+you have an open position, especially in Rust!
+
 (C) Joël Lupien 2020-2021
 =>/blog/2021-05-31_minigene_and_the_future/index.txt View page source
