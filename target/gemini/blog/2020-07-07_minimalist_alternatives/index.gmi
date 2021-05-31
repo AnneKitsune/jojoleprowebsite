@@ -1,9 +1,9 @@
 # Jojolepro
 => blog Blog
-=> quotes Quotes
 => projects Projects
-=> https://git.jojolepro.com Git
+=> quotes Quotes
 => https://github.com/jojolepro/ GitHub
+=> https://git.jojolepro.com Archives
 
 
 
