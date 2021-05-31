@@ -400,3 +400,6 @@ https://discord.gg/amethyst
 
 Follow the blog using RSS!
 https://jojolepro.com/blog/blog.xml
+
+As a final note, I'm currently looking for a job. Feel free to contact me if
+you have an open position, especially in Rust!
