@@ -14,7 +14,7 @@ cargo new --bin start_with_ecs
 cd start_with_ecs
 ```
 
-Great! Let's add our dependenci in Cargo.toml:
+Great! Let's add our dependency in Cargo.toml:
 
 ```
 [dependencies]
