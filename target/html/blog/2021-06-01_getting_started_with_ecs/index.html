@@ -1,3 +1,56 @@
+<!doctype html>
+<html lang=en>
+    <head>
+        <link href='data:image/png;base64,R0lGODlhGAAYAOeIAAAAALVSwLlUxLxXyLlZxMlb1cpc1hScoRSepNBf3c9h29Rg4NJh39Nh4BWhps9j3NJi3s1k2dVh4tBk3NVi4tNj39Zi49di49di5NBl3NVj4tNk39hi5dZj49Zj5Nli5dRk4ddj5NVk4thj5dti5tNl4Nhj5tZk49Fm3tlj5dRl4Nlj5tdk49dk5Npj5ddk5dVl4dhk5dZl49lk5tdl5dpk5tZm49Nn5NVn4tVn5dZn49Ro4Nlm5tNo5ddn5NBq29Vo4dVo4haortln5dRp4Ndo49Zp49Nq5Raqr9pp59hr5NFu5Nls5s1y5BevtBawtcp25BizuRi1uhm4vi20wbqG4hm7wRq8whm9w7yI4raM4Bq/xRq/xrSO4RrByBrDyRvDyhvFyxvGzBvHzRvHzqeb4BvIzhvIzxzIzxvJz6ad4CTH0aKf3xzK0BzK0RzL0p6i3xzN1BzP1R3P1pGr3h3Q15Or3RzR2CPP2R3R2B3R2R/R2RzS2R3S2SfP2Yex3Yey3TPN2TbN2Xm43DDP2Xa63EXK2kbK2v///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////yH+B2hhaSBoYWkAIfkEAQoA/wAsAAAAABgAGAAACP4A/wkcSLCgwYMFASgEgLDhQiFWrkxZ2JAgACl58vTZuDGPwor/ALzhyFEMmI1uGCIEUKfPHABkODoAMGZjHZUJ02wEEAUARwBofNrEOVBoH5EAzuyMA0Djxi9EAXD5mWdOS5JYo2Ld+pNjGpUAEGwVmrLPlqMkwSLhCgAqAgAHjG40wxCAE656ADzBQwWAHz5ZQ2LhashOlR4uSOToAkjQz5BesB5ic4QHiyQyiFiokQJKoZ8ATnIctCQGBCYqRHjYoWPIihUvyhA6CiDMxj10aFhI8MBGhghBZnTg8fp1FkIKa/aBk2LFhQUlbOAoooHDiRbFX2tR2EbPnw+vR0NMMAJEAQwQFBpoCDFCgoCFAOQEapJ9Q5EKDFCUKPKDAPyid6hhQnZK+GDAAPARVdQaN7yGQQEB/AdSSAlOaOGFAgUEADs=' 
+        rel=icon>
+        <title>Jojolepro.com</title>
+        <meta charset=utf-8>
+        <meta name=description content="A bunch of stuff and things!">
+        <style>
+            body{
+                text-align:center;
+                overflow-y:scroll;
+                /*font:calc(0.75em + 1vmin) monospace;*/
+                font: 1.3em monospace;
+                background-color: #181a1b;
+                border-color: #575757;
+                color: #e8e6e3;
+            }
+            pre{
+                text-align:left;
+                display:inline-block;
+            }
+            img{
+                max-width:80ch;
+                display:block;
+                height:auto;
+                width:100%;
+            }
+            nav a {
+                margin-right: 1ch;
+            }
+            a {
+                color: #3391ff;
+            }
+            * {
+                scrollbar-color: #2a2c2e #1c1e1f;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <a href=/><b>Jojolepro</b></a>
+            <br/>
+            <a href=/blog>Blog</a>
+            <a href=/projects>Projects</a>
+            <a href=/quotes>Quotes</a>
+            <!--<a href=/focks>Focks</a>-->
+            <a href=https://github.com/jojolepro/>GitHub</a>
+            <a href=https://git.jojolepro.com>Archive</a>
+        </nav>
+        <br/>
+        <article>
+            <pre>
 Getting Started with ECS using Planck ECS
 ================================================================================
 Hello hello! This tutorial is aiming people having between zero and moderate
@@ -109,7 +162,7 @@ entities that exist in the World.
 ```
 fn main() {
     let mut world = World::default();
-    world.initialize::<Entities>();
+    world.initialize::&lt;Entities&gt;();
 }
 ```
 
@@ -118,7 +171,7 @@ The initialize function will insert Entities inside of the World.
 Initialize works for all structures that have a default value
 (implements the Default trait).
 In case you ever need to insert a structure which does not implement Default,
-you can always use Option<YourResource>, since Option's default is always
+you can always use Option&lt;YourResource&gt;, since Option's default is always
 Option::None.
 
 Our First Entity
@@ -128,8 +181,8 @@ Let's now use our Entities Resource to create our first entity:
 ```
 fn main() {
     let mut world = World::default();
-    world.initialize::<Entities>();
-    let entity1 = world.get_mut::<Entities>().unwrap().create();
+    world.initialize::&lt;Entities&gt;();
+    let entity1 = world.get_mut::&lt;Entities&gt;().unwrap().create();
 }
 ```
 
@@ -148,7 +201,7 @@ Let's rewrite our code using it:
 ```
 fn main() {
     let mut world = World::default();
-    let entity1 = world.get_mut_or_default::<Entities>().create();
+    let entity1 = world.get_mut_or_default::&lt;Entities&gt;().create();
 }
 ```
 
@@ -177,12 +230,12 @@ initializing a Components Resource and specifying that we want the Color enum.
 ```
 fn main() {
     let mut world = World::default();
-    world.initialize::<Components<Color>>();
-    let entity1 = world.get_mut_or_default::<Entities>().create();
+    world.initialize::&lt;Components&lt;Color&gt;&gt;();
+    let entity1 = world.get_mut_or_default::&lt;Entities&gt;().create();
 }
 ```
 
-The Components<T> Resource is simply used to contain components of type T in
+The Components&lt;T&gt; Resource is simply used to contain components of type T in
 a way that is easy to use and also is quick to access.
 
 Finally, let's attach our Component to the Entity!
@@ -190,9 +243,9 @@ Finally, let's attach our Component to the Entity!
 ```
 fn main() {
     let mut world = World::default();
-    world.initialize::<Components<Color>>();
-    let entity1 = world.get_mut_or_default::<Entities>().create();
-    world.get_mut::<Components<Color>>().unwrap().insert(entity1, Color::Red);
+    world.initialize::&lt;Components&lt;Color&gt;&gt;();
+    let entity1 = world.get_mut_or_default::&lt;Entities&gt;().create();
+    world.get_mut::&lt;Components&lt;Color&gt;&gt;().unwrap().insert(entity1, Color::Red);
 }
 ```
 
@@ -205,14 +258,14 @@ First is to tell rust to guess that we want the Color component by using _.
 ```
 fn main() {
     let mut world = World::default();
-    world.initialize::<Components<Color>>();
-    let entity1 = world.get_mut_or_default::<Entities>().create();
-    world.get_mut::<Components<_>>().unwrap().insert(entity1, Color::Red);
+    world.initialize::&lt;Components&lt;Color&gt;&gt;();
+    let entity1 = world.get_mut_or_default::&lt;Entities&gt;().create();
+    world.get_mut::&lt;Components&lt;_&gt;&gt;().unwrap().insert(entity1, Color::Red);
 }
 ```
 
 Rust is smart enough to understand from our usage of Color::Red on the
-right side that what we want is Components<Color>.
+right side that what we want is Components&lt;Color&gt;.
 
 Now, this code looks strangely like the one we saw when creating the Entity
 previously. Let's apply the same trick:
@@ -220,15 +273,15 @@ previously. Let's apply the same trick:
 ```
 fn main() {
     let mut world = World::default();
-    let entity1 = world.get_mut_or_default::<Entities>().create();
-    world.get_mut_or_default::<Components<_>>().insert(entity1, Color::Red);
+    let entity1 = world.get_mut_or_default::&lt;Entities&gt;().create();
+    world.get_mut_or_default::&lt;Components&lt;_&gt;&gt;().insert(entity1, Color::Red);
 }
 ```
 
 Yep! We can use get_mut_or_default here too!
 
 Let's summarize. Now, we have an Entity stored in the Entities resource.
-We also have a Color::Red component that is stored in the Components<Color>
+We also have a Color::Red component that is stored in the Components&lt;Color&gt;
 resource and that is "assigned" to our Entity.
 
 Using Systems
@@ -241,7 +294,7 @@ As we saw previously, Systems are just functions that use data from the World.
 Let's write a System that changes the color of the apple to blue.
 
 ```
-fn change_color_system(colors: &mut Components<Color>) -> SystemResult {
+fn change_color_system(colors: &amp;mut Components&lt;Color&gt;) -&gt; SystemResult {
     Ok(())
 }
 
@@ -250,18 +303,18 @@ fn main() {
 ```
 
 We have some things to explain here.
-The parameters of Systems use references (that's the & and &mut symbols).
-A special rule for Systems is that all parameters using &mut must be placed
-after all parameters using &.
+The parameters of Systems use references (that's the &amp; and &amp;mut symbols).
+A special rule for Systems is that all parameters using &amp;mut must be placed
+after all parameters using &amp;.
 
 For example, the following is invalid:
 ```
-fn system(a: &mut A, b: &B, c: &mut C) -> SystemResult {...}
+fn system(a: &amp;mut A, b: &amp;B, c: &amp;mut C) -&gt; SystemResult {...}
 ```
 
 It should instead be written as:
 ```
-fn system(b: &B, a: &mut A, c: &mut C) -> SystemResult {...}
+fn system(b: &amp;B, a: &amp;mut A, c: &amp;mut C) -&gt; SystemResult {...}
 ```
 
 Now, you might wonder what that SystemResult thing is.
@@ -278,8 +331,8 @@ For this tutorial, we will always use Ok.
 Now, let's change the color of that apple!
 
 ```
-fn change_color_system(colors: &mut Components<Color>) -> SystemResult {
-    for color in join!(&mut colors) {
+fn change_color_system(colors: &amp;mut Components&lt;Color&gt;) -&gt; SystemResult {
+    for color in join!(&amp;mut colors) {
         *color = Color::Blue;
     }
     Ok(())
@@ -299,7 +352,7 @@ To run a System, we use:
 ```
 fn main () {
     [...]
-    change_color_system.system().run(&mut world).unwrap();
+    change_color_system.system().run(&amp;mut world).unwrap();
 }
 ```
 
@@ -314,8 +367,8 @@ Let's fix this up:
 fn main() {
     [...]
     let mut system = change_color_system.system();
-    system.initialize(&mut world);
-    system.run(&mut world).unwrap();
+    system.initialize(&amp;mut world);
+    system.run(&amp;mut world).unwrap();
 
 }
 ```
@@ -339,23 +392,23 @@ fn main() {
     let mut world = World::default();
     let mut dispatcher = DispatcherBuilder::default()
         .add(change_color_system)
-        .build(&mut world);
+        .build(&amp;mut world);
 
-    let entity1 = world.get_mut_or_default::<Entities>().create();
-    world.get_mut_or_default::<Components<_>>().insert(entity1, Color::Red);
+    let entity1 = world.get_mut_or_default::&lt;Entities&gt;().create();
+    world.get_mut_or_default::&lt;Components&lt;_&gt;&gt;().insert(entity1, Color::Red);
 
-    dispatcher.run_seq(&mut world).unwrap();
+    dispatcher.run_seq(&amp;mut world).unwrap();
 }
 ```
 
 The Dispatcher creation is pretty much self explanatory. Simply chain
 .add(system).add(system2).add(system3) to add Systems, then complete the
-Dispatcher using the build(&mut world) function.
+Dispatcher using the build(&amp;mut world) function.
 
-It is when calling build(&mut world) that the initialize function will be called
+It is when calling build(&amp;mut world) that the initialize function will be called
 on each System.
 
-Finally, we run the Systems using dispatcher.run_seq(&mut world).
+Finally, we run the Systems using dispatcher.run_seq(&amp;mut world).
 
 run_seq means "Run Sequentially", which will execute the Systems one after the
 other.
@@ -372,10 +425,10 @@ that we don't want to change its Color.
 ```
 fn main() {
     let mut world = World::default();
-    let apple = world.get_mut_or_default::<Entities>().create();
-    let orange = world.get_mut_or_default::<Entities>().create();
-    world.get_mut_or_default::<Components<_>>().insert(apple, Color::Red);
-    world.get_mut_or_default::<Components<_>>().insert(orange, Color::Red);
+    let apple = world.get_mut_or_default::&lt;Entities&gt;().create();
+    let orange = world.get_mut_or_default::&lt;Entities&gt;().create();
+    world.get_mut_or_default::&lt;Components&lt;_&gt;&gt;().insert(apple, Color::Red);
+    world.get_mut_or_default::&lt;Components&lt;_&gt;&gt;().insert(orange, Color::Red);
 }
 ```
 
@@ -400,11 +453,11 @@ struct ColorChanging;
 and add it to our apple Entity:
 
 ```
-let apple = world.get_mut_or_default::<Entities>().create();
-let orange = world.get_mut_or_default::<Entities>().create();
-world.get_mut_or_default::<Components<_>>().insert(apple, Color::Red);
-world.get_mut_or_default::<Components<_>>().insert(apple, ColorChanging); //here
-world.get_mut_or_default::<Components<_>>().insert(orange, Color::Red);
+let apple = world.get_mut_or_default::&lt;Entities&gt;().create();
+let orange = world.get_mut_or_default::&lt;Entities&gt;().create();
+world.get_mut_or_default::&lt;Components&lt;_&gt;&gt;().insert(apple, Color::Red);
+world.get_mut_or_default::&lt;Components&lt;_&gt;&gt;().insert(apple, ColorChanging); //here
+world.get_mut_or_default::&lt;Components&lt;_&gt;&gt;().insert(orange, Color::Red);
 ```
 
 Finally, let's make it so our System only runs on Entities that have a
@@ -412,10 +465,10 @@ ColorChanging Component:
 
 ```
 fn change_color_system(
-    changings: &Components<ColorChanging>,
-    colors: &mut Components<Color>) -> SystemResult {
+    changings: &amp;Components&lt;ColorChanging&gt;,
+    colors: &amp;mut Components&lt;Color&gt;) -&gt; SystemResult {
 
-    for (_changing, color) in join!(&changings && &mut colors) {
+    for (_changing, color) in join!(&amp;changings &amp;&amp; &amp;mut colors) {
         *color.unwrap() = Color::Blue;
     }
 
@@ -423,7 +476,7 @@ fn change_color_system(
 }
 ```
 
-First, we add the Components<ColorChanging> parameter.
+First, we add the Components&lt;ColorChanging&gt; parameter.
 
 Then, we modify the parameters of join!() macro.
 Here, we tell it to give us the Component pairs only for Entities having
@@ -441,14 +494,14 @@ We need this when joining over multiple Components at the same time.
 This is because the join macro also supports || OR operations. For example, if
 we used:
 ```
-join!(&mut colors || &changings)
+join!(&amp;mut colors || &amp;changings)
 ```
 we would have pairs of Components that look like this:
 ```
-(&mut Option<Color>, &Option<ColorChanging>)
+(&amp;mut Option&lt;Color&gt;, &amp;Option&lt;ColorChanging&gt;)
 ```
 
-Because we use &&, we can assume that both Options have a value (Some).
+Because we use &amp;&amp;, we can assume that both Options have a value (Some).
 But if we use ||, then we cannot assume this, as one of the Entities has a
 Color but no ColorChanging Component.
 
@@ -458,11 +511,11 @@ It is always a good practice to verify that our Systems are working fine.
 Let's do this quickly in the main function:
 ```
     [...]
-    dispatcher.run_seq(&mut world).unwrap();
+    dispatcher.run_seq(&amp;mut world).unwrap();
 
-    assert_eq!(*world.get::<Components<Color>>().unwrap().get(apple).unwrap(),
+    assert_eq!(*world.get::&lt;Components&lt;Color&gt;&gt;().unwrap().get(apple).unwrap(),
         Color::Blue);
-    assert_eq!(*world.get::<Components<Color>>().unwrap().get(orange).unwrap(),
+    assert_eq!(*world.get::&lt;Components&lt;Color&gt;&gt;().unwrap().get(orange).unwrap(),
         Color::Red);
 }
 ```
@@ -473,10 +526,10 @@ Simple!
 Use:
 
 ```
-    world.get_mut::<Components<Color>>().unwrap().remove(apple);
+    world.get_mut::&lt;Components&lt;Color&gt;&gt;().unwrap().remove(apple);
 ```
 
-Of course, this works inside of Systems too, since you have Components<Color>
+Of course, this works inside of Systems too, since you have Components&lt;Color&gt;
 as a parameter!
 
 Removing an Entity
@@ -485,11 +538,11 @@ Also simple!
 Use:
 
 ```
-    world.get_mut::<Entities>().unwrap().kill(apple);
+    world.get_mut::&lt;Entities&gt;().unwrap().kill(apple);
 ```
 
 However, it is important to know that removing an Entity using kill(entity) will
-NOT delete its Components that are in the Components<T> Resources.
+NOT delete its Components that are in the Components&lt;T&gt; Resources.
 
 This can be done automatically by using the world.maintain() function:
 
@@ -498,7 +551,7 @@ This can be done automatically by using the world.maintain() function:
 ```
 
 It is recommended to run world.maintain() after using
-dispatcher.run_seq(&mut world), as this ensures everything is cleaned up!
+dispatcher.run_seq(&amp;mut world), as this ensures everything is cleaned up!
 
 Conclusion
 --------------------------------------------------------------------------------
@@ -509,7 +562,7 @@ now know almost every single function of Planck ECS!
 
 If you liked this tutorial or the work I do (I wrote Planck ECS, by the way!),
 consider donating on Patreon.
-https://patreon.com/jojolepro
+<a href='https://patreon.com/jojolepro'>https://patreon.com/jojolepro</a>
 
 It is your donations that enable me to continue creating Rust libraries and
 learning material like this one!
@@ -531,10 +584,10 @@ enum Color {
 struct ColorChanging;
 
 fn change_color_system(
-    changings: &Components<ColorChanging>,
-    colors: &mut Components<Color>,
-) -> SystemResult {
-    for (_changing, color) in join!(&changings && &mut colors) {
+    changings: &amp;Components&lt;ColorChanging&gt;,
+    colors: &amp;mut Components&lt;Color&gt;,
+) -&gt; SystemResult {
+    for (_changing, color) in join!(&amp;changings &amp;&amp; &amp;mut colors) {
         *color.unwrap() = Color::Blue;
     }
     Ok(())
@@ -544,25 +597,25 @@ fn main() {
     let mut world = World::default();
     let mut dispatcher = DispatcherBuilder::default()
         .add(change_color_system)
-        .build(&mut world);
+        .build(&amp;mut world);
 
-    let apple = world.get_mut_or_default::<Entities>().create();
-    let orange = world.get_mut_or_default::<Entities>().create();
+    let apple = world.get_mut_or_default::&lt;Entities&gt;().create();
+    let orange = world.get_mut_or_default::&lt;Entities&gt;().create();
     world
-        .get_mut_or_default::<Components<_>>()
+        .get_mut_or_default::&lt;Components&lt;_&gt;&gt;()
         .insert(apple, Color::Red);
     world
-        .get_mut_or_default::<Components<_>>()
+        .get_mut_or_default::&lt;Components&lt;_&gt;&gt;()
         .insert(apple, ColorChanging);
     world
-        .get_mut_or_default::<Components<_>>()
+        .get_mut_or_default::&lt;Components&lt;_&gt;&gt;()
         .insert(orange, Color::Red);
 
-    dispatcher.run_seq(&mut world).unwrap();
+    dispatcher.run_seq(&amp;mut world).unwrap();
 
     assert_eq!(
         *world
-            .get::<Components<Color>>()
+            .get::&lt;Components&lt;Color&gt;&gt;()
             .unwrap()
             .get(apple)
             .unwrap(),
@@ -570,15 +623,15 @@ fn main() {
     );
     assert_eq!(
         *world
-            .get::<Components<Color>>()
+            .get::&lt;Components&lt;Color&gt;&gt;()
             .unwrap()
             .get(orange)
             .unwrap(),
         Color::Red
     );
 
-    world.get_mut::<Components<Color>>().unwrap().remove(apple);
-    world.get_mut::<Entities>().unwrap().kill(apple);
+    world.get_mut::&lt;Components&lt;Color&gt;&gt;().unwrap().remove(apple);
+    world.get_mut::&lt;Entities&gt;().unwrap().kill(apple);
 
     world.maintain();
 }
@@ -589,7 +642,18 @@ Patreon rocket goes brrrrrrrrrrrr
 .
 ..
 =...
-https://patreon.com/jojolepro
+<a href='https://patreon.com/jojolepro'>https://patreon.com/jojolepro</a>
 =...
 ..
 .
+            </pre>
+        </article>
+        <br/>
+        <footer>
+            <div>
+                (C) Joël Lupien 2020-2021
+            </div>
+            <a href="/blog/2021-06-01_getting_started_with_ecs/index.txt">View page source</a>
+        </footer>
+    </body>
+</html>

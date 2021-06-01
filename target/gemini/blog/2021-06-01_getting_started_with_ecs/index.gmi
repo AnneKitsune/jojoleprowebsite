@@ -1,12 +1,19 @@
-Getting Started with ECS using Planck ECS
-================================================================================
+# Jojolepro
+=> blog Blog
+=> projects Projects
+=> quotes Quotes
+=> https://github.com/jojolepro/ GitHub
+=> https://git.jojolepro.com Archives
+
+
+
+## Getting Started with ECS using Planck ECS
 Hello hello! This tutorial is aiming people having between zero and moderate
 experience with an ECS.
 
 Let's jump right in!
 
-Creating our test project
---------------------------------------------------------------------------------
+### Creating our test project
 Let's start a project so you can follow along.
 
 ```
@@ -23,8 +30,7 @@ planck_ecs = "1.2.0"
 
 Now, we are ready to start talking about the ECS!
 
-ECS?
---------------------------------------------------------------------------------
+### ECS?
 Entity-Component-System.
 
 It is a way of organising data that is well suited for game projects and
@@ -33,53 +39,45 @@ simulations.
 In this tutorial, we are not going to make parallels with how Object Oriented
 programming works. We will just talk about the concepts one by one.
 
-Entity
---------------------------------------------------------------------------------
+### Entity
 An entity is a "thing" on which you can attach "properties".
 
 For example, what we call an "Apple" is an entity. You are an entity.
 Every object is an entity. Simply put: Entity is the fancy name we give to
 "something".
 
-Component
---------------------------------------------------------------------------------
+### Component
 Components are the properties that make entities what they are.
 For example, an "Apple" have these properties:
-- Red Color
-- Sweet Taste
-- Round Shape
+* Red Color
+* Sweet Taste
+* Round Shape
 
 Components are used to describe what the entity is by attaching data (meaning)
 to it.
 
-System
---------------------------------------------------------------------------------
+### System
 Systems are simply functions. They run code. That's it!
 
-Is this all there is?
---------------------------------------------------------------------------------
+### Is this all there is?
 No, there are a couple extra concepts introduced by Planck ECS.
 Don't be afraid, they are simple!
 
-World
---------------------------------------------------------------------------------
+### World
 World is a structure which contains everything that the Systems should have
 access to.
 
-Resource
---------------------------------------------------------------------------------
+### Resource
 Anything contained inside of the World is called a "Resource".
 It is just a convenient name.
 
-Dispatcher
---------------------------------------------------------------------------------
+### Dispatcher
 Dispatchers are used to execute systems (which are just functions!) using data
 that is inside of the World.
 
 They are optional, but very convenient!
 
-Ready? Set?
---------------------------------------------------------------------------------
+### Ready? Set?
 Go!
 
 Open up src/main.rs
@@ -100,8 +98,7 @@ fn main() {
 }
 ```
 
-Our First Resource
---------------------------------------------------------------------------------
+### Our First Resource
 Let's insert our first Resource into the world.
 We will use the Entities resource, which is a structure that holds a list of
 entities that exist in the World.
@@ -121,8 +118,7 @@ In case you ever need to insert a structure which does not implement Default,
 you can always use Option<YourResource>, since Option's default is always
 Option::None.
 
-Our First Entity
---------------------------------------------------------------------------------
+### Our First Entity
 Let's now use our Entities Resource to create our first entity:
 
 ```
@@ -152,8 +148,7 @@ fn main() {
 }
 ```
 
-Our first Component
---------------------------------------------------------------------------------
+### Our first Component
 Now, let's add some meaning to this Entity. We will attach a color to it.
 
 First, we will create the Color component. This can be anything:
@@ -231,8 +226,7 @@ Let's summarize. Now, we have an Entity stored in the Entities resource.
 We also have a Color::Red component that is stored in the Components<Color>
 resource and that is "assigned" to our Entity.
 
-Using Systems
---------------------------------------------------------------------------------
+### Using Systems
 Remember the core concepts? Entity, Component and System.
 Well, now we are at the System part.
 
@@ -292,8 +286,7 @@ that we can modify them.
 
 Then, we change the color.
 
-Running the System
---------------------------------------------------------------------------------
+### Running the System
 To run a System, we use:
 
 ```
@@ -325,8 +318,7 @@ for every Resource that is in the System's parameters.
 
 Convenient, right?
 
-Dispatcher
---------------------------------------------------------------------------------
+### Dispatcher
 Remember Dispatchers? We saw that they are used to execute multiple Systems.
 Well they do more than that, they also call system.initialize for you!
 
@@ -363,8 +355,7 @@ other.
 Planck ECS also has a feature where you can execute multiple Systems at the
 same time. We will not use it in this tutorial.
 
-Multiple Components
---------------------------------------------------------------------------------
+### Multiple Components
 Now, let's come back to our game!
 Let's imagine that we had another Entity that also had a Color Component, but
 that we don't want to change its Color.
@@ -385,8 +376,8 @@ We need a way to add some more meaning (data) to distinguish between the two
 entities.
 
 There are a couple ways to do this.
-- We can add an "Apple" Component.
-- We can add a "ColorChanging" Component.
+* We can add an "Apple" Component.
+* We can add a "ColorChanging" Component.
 
 Generally speaking, the second approach is preferred, because it encourages
 reusing Systems for more than one type of Entity.
@@ -452,8 +443,7 @@ Because we use &&, we can assume that both Options have a value (Some).
 But if we use ||, then we cannot assume this, as one of the Entities has a
 Color but no ColorChanging Component.
 
-Making sure everything works
---------------------------------------------------------------------------------
+### Making sure everything works
 It is always a good practice to verify that our Systems are working fine.
 Let's do this quickly in the main function:
 ```
@@ -467,8 +457,7 @@ Let's do this quickly in the main function:
 }
 ```
 
-Removing a Component
---------------------------------------------------------------------------------
+### Removing a Component
 Simple!
 Use:
 
@@ -479,8 +468,7 @@ Use:
 Of course, this works inside of Systems too, since you have Components<Color>
 as a parameter!
 
-Removing an Entity
---------------------------------------------------------------------------------
+### Removing an Entity
 Also simple!
 Use:
 
@@ -500,8 +488,7 @@ This can be done automatically by using the world.maintain() function:
 It is recommended to run world.maintain() after using
 dispatcher.run_seq(&mut world), as this ensures everything is cleaned up!
 
-Conclusion
---------------------------------------------------------------------------------
+### Conclusion
 I hope this was instructive!
 
 It might seem like there are lots of things to learn, but also consider that you
@@ -509,13 +496,12 @@ now know almost every single function of Planck ECS!
 
 If you liked this tutorial or the work I do (I wrote Planck ECS, by the way!),
 consider donating on Patreon.
-https://patreon.com/jojolepro
+=>https://patreon.com/jojolepro
 
 It is your donations that enable me to continue creating Rust libraries and
 learning material like this one!
 
-Full Code
---------------------------------------------------------------------------------
+### Full Code
 Here is the full code created in this tutorial:
 
 ```
@@ -589,7 +575,10 @@ Patreon rocket goes brrrrrrrrrrrr
 .
 ..
 =...
-https://patreon.com/jojolepro
+=>https://patreon.com/jojolepro
 =...
 ..
 .
+
+(C) Joël Lupien 2020-2021
+=>/blog/2021-06-01_getting_started_with_ecs/index.txt View page source
