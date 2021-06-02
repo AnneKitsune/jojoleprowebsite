@@ -68,10 +68,10 @@ minigene, we place the different features into groups and hide them behind
 feature gates.
 
 You can enable those features using:
-```
+#```
 minigene = { git = "https://github.com/jojolepro/minigene",
     features = ["feature1", "feature2", "..."] }
-```
+#```
 
 Finally, layer 4 is the game you want to make.
 Usually, it will import minigene and use some of its features.
@@ -150,11 +150,11 @@ Bracket-lib drives the execution, either through its own event loop or
 through web assembly, and then calls Minigene's Engine::engine_frame function.
 
 The game can be tested using:
-```
+#```
 git clone https://github.com/amethyst/shotcaller
 cd shotcaller
 git checkout ac07a7bfb4224e8af4bd43e6df3afcaa879d4a48
-```
+#```
 
 In the case this doesn't work, there is also an online version:
 https://shotcaller.jojolepro.com/

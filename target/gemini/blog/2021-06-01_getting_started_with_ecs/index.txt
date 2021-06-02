@@ -9,17 +9,17 @@ Creating our test project
 --------------------------------------------------------------------------------
 Let's start a project so you can follow along.
 
-```
+#```
 cargo new --bin start_with_ecs
 cd start_with_ecs
-```
+#```
 
 Great! Let's add our dependency in Cargo.toml:
 
-```
+#```
 [dependencies]
 planck_ecs = "1.2.0"
-```
+#```
 
 Now, we are ready to start talking about the ECS!
 
@@ -87,18 +87,18 @@ Open up src/main.rs
 We will first import Planck ECS' features into our game.
 Add the following line at the start of the file:
 
-```
+#```
 use planck_ecs::*;
-```
+#```
 
 Next, we will need something to contain the data we create. Let's create
 a new World inside of the main function:
 
-```
+#```
 fn main() {
     let mut world = World::default();
 }
-```
+#```
 
 Our First Resource
 --------------------------------------------------------------------------------
@@ -106,12 +106,12 @@ Let's insert our first Resource into the world.
 We will use the Entities resource, which is a structure that holds a list of
 entities that exist in the World.
 
-```
+#```
 fn main() {
     let mut world = World::default();
     world.initialize::<Entities>();
 }
-```
+#```
 
 The initialize function will insert Entities inside of the World.
 
@@ -125,13 +125,13 @@ Our First Entity
 --------------------------------------------------------------------------------
 Let's now use our Entities Resource to create our first entity:
 
-```
+#```
 fn main() {
     let mut world = World::default();
     world.initialize::<Entities>();
     let entity1 = world.get_mut::<Entities>().unwrap().create();
 }
-```
+#```
 
 Here, get_mut gives us access to the Resource in World.
 Since World doesn't contain every single possible Resource, it returns an Option
@@ -145,12 +145,12 @@ away, there is a convenient function that does both steps at the same time:
 world.get_mut_or_default.
 
 Let's rewrite our code using it:
-```
+#```
 fn main() {
     let mut world = World::default();
     let entity1 = world.get_mut_or_default::<Entities>().create();
 }
-```
+#```
 
 Our first Component
 --------------------------------------------------------------------------------
@@ -160,7 +160,7 @@ First, we will create the Color component. This can be anything:
 a struct, an enum, you choose.
 
 Here, let's use an enum. Add the following before or after the main function:
-```
+#```
 #[derive(Debug, PartialEq)]
 enum Color {
     Red,
@@ -170,31 +170,31 @@ enum Color {
 
 fn main() {
 [...]
-```
+#```
 
 And now, we can tell the World that we want to use this enum as a Component by
 initializing a Components Resource and specifying that we want the Color enum.
-```
+#```
 fn main() {
     let mut world = World::default();
     world.initialize::<Components<Color>>();
     let entity1 = world.get_mut_or_default::<Entities>().create();
 }
-```
+#```
 
 The Components<T> Resource is simply used to contain components of type T in
 a way that is easy to use and also is quick to access.
 
 Finally, let's attach our Component to the Entity!
 
-```
+#```
 fn main() {
     let mut world = World::default();
     world.initialize::<Components<Color>>();
     let entity1 = world.get_mut_or_default::<Entities>().create();
     world.get_mut::<Components<Color>>().unwrap().insert(entity1, Color::Red);
 }
-```
+#```
 
 Here we use the insert(entity, component) method available on the Components
 resource.
@@ -202,14 +202,14 @@ resource.
 There are two simplifications that we can do to our code.
 First is to tell rust to guess that we want the Color component by using _.
 
-```
+#```
 fn main() {
     let mut world = World::default();
     world.initialize::<Components<Color>>();
     let entity1 = world.get_mut_or_default::<Entities>().create();
     world.get_mut::<Components<_>>().unwrap().insert(entity1, Color::Red);
 }
-```
+#```
 
 Rust is smart enough to understand from our usage of Color::Red on the
 right side that what we want is Components<Color>.
@@ -217,13 +217,13 @@ right side that what we want is Components<Color>.
 Now, this code looks strangely like the one we saw when creating the Entity
 previously. Let's apply the same trick:
 
-```
+#```
 fn main() {
     let mut world = World::default();
     let entity1 = world.get_mut_or_default::<Entities>().create();
     world.get_mut_or_default::<Components<_>>().insert(entity1, Color::Red);
 }
-```
+#```
 
 Yep! We can use get_mut_or_default here too!
 
@@ -240,14 +240,14 @@ As we saw previously, Systems are just functions that use data from the World.
 
 Let's write a System that changes the color of the apple to blue.
 
-```
+#```
 fn change_color_system(colors: &mut Components<Color>) -> SystemResult {
     Ok(())
 }
 
 fn main() {
     [...]
-```
+#```
 
 We have some things to explain here.
 The parameters of Systems use references (that's the & and &mut symbols).
@@ -255,14 +255,14 @@ A special rule for Systems is that all parameters using &mut must be placed
 after all parameters using &.
 
 For example, the following is invalid:
-```
+#```
 fn system(a: &mut A, b: &B, c: &mut C) -> SystemResult {...}
-```
+#```
 
 It should instead be written as:
-```
+#```
 fn system(b: &B, a: &mut A, c: &mut C) -> SystemResult {...}
-```
+#```
 
 Now, you might wonder what that SystemResult thing is.
 This is a feature that is unique to Planck ECS: Error handling.
@@ -277,14 +277,14 @@ For this tutorial, we will always use Ok.
 
 Now, let's change the color of that apple!
 
-```
+#```
 fn change_color_system(colors: &mut Components<Color>) -> SystemResult {
     for color in join!(&mut colors) {
         *color = Color::Blue;
     }
     Ok(())
 }
-```
+#```
 
 The join!() macro returns an iterator over the Components we reference.
 Here, we tell the join!() macro to give us all Color Components mutably, so
@@ -296,12 +296,12 @@ Running the System
 --------------------------------------------------------------------------------
 To run a System, we use:
 
-```
+#```
 fn main () {
     [...]
     change_color_system.system().run(&mut world).unwrap();
 }
-```
+#```
 
 This will automatically get the required Components from World and call
 the function change_color_system.
@@ -310,7 +310,7 @@ Now, what happens if the System uses a Resource which is not in World?
 It will crash!
 
 Let's fix this up:
-```
+#```
 fn main() {
     [...]
     let mut system = change_color_system.system();
@@ -318,7 +318,7 @@ fn main() {
     system.run(&mut world).unwrap();
 
 }
-```
+#```
 
 When calling the initialize function on a System, it will use world.initialize()
 for every Resource that is in the System's parameters.
@@ -334,7 +334,7 @@ They are also very convenient, because without them you would need three
 lines for each System!
 
 Here's how we use a Dispatcher:
-```
+#```
 fn main() {
     let mut world = World::default();
     let mut dispatcher = DispatcherBuilder::default()
@@ -346,7 +346,7 @@ fn main() {
 
     dispatcher.run_seq(&mut world).unwrap();
 }
-```
+#```
 
 The Dispatcher creation is pretty much self explanatory. Simply chain
 .add(system).add(system2).add(system3) to add Systems, then complete the
@@ -369,7 +369,7 @@ Now, let's come back to our game!
 Let's imagine that we had another Entity that also had a Color Component, but
 that we don't want to change its Color.
 
-```
+#```
 fn main() {
     let mut world = World::default();
     let apple = world.get_mut_or_default::<Entities>().create();
@@ -377,7 +377,7 @@ fn main() {
     world.get_mut_or_default::<Components<_>>().insert(apple, Color::Red);
     world.get_mut_or_default::<Components<_>>().insert(orange, Color::Red);
 }
-```
+#```
 
 With our current System, both entities will have their colors changed to blue.
 
@@ -393,24 +393,24 @@ reusing Systems for more than one type of Entity.
 
 Let's create this Component:
 
-```
+#```
 struct ColorChanging;
-```
+#```
 
 and add it to our apple Entity:
 
-```
+#```
 let apple = world.get_mut_or_default::<Entities>().create();
 let orange = world.get_mut_or_default::<Entities>().create();
 world.get_mut_or_default::<Components<_>>().insert(apple, Color::Red);
 world.get_mut_or_default::<Components<_>>().insert(apple, ColorChanging); //here
 world.get_mut_or_default::<Components<_>>().insert(orange, Color::Red);
-```
+#```
 
 Finally, let's make it so our System only runs on Entities that have a
 ColorChanging Component:
 
-```
+#```
 fn change_color_system(
     changings: &Components<ColorChanging>,
     colors: &mut Components<Color>) -> SystemResult {
@@ -421,7 +421,7 @@ fn change_color_system(
 
     Ok(())
 }
-```
+#```
 
 First, we add the Components<ColorChanging> parameter.
 
@@ -440,13 +440,13 @@ We need this when joining over multiple Components at the same time.
 
 This is because the join macro also supports || OR operations. For example, if
 we used:
-```
+#```
 join!(&mut colors || &changings)
-```
+#```
 we would have pairs of Components that look like this:
-```
+#```
 (&mut Option<Color>, &Option<ColorChanging>)
-```
+#```
 
 Because we use &&, we can assume that both Options have a value (Some).
 But if we use ||, then we cannot assume this, as one of the Entities has a
@@ -456,7 +456,7 @@ Making sure everything works
 --------------------------------------------------------------------------------
 It is always a good practice to verify that our Systems are working fine.
 Let's do this quickly in the main function:
-```
+#```
     [...]
     dispatcher.run_seq(&mut world).unwrap();
 
@@ -465,16 +465,16 @@ Let's do this quickly in the main function:
     assert_eq!(*world.get::<Components<Color>>().unwrap().get(orange).unwrap(),
         Color::Red);
 }
-```
+#```
 
 Removing a Component
 --------------------------------------------------------------------------------
 Simple!
 Use:
 
-```
+#```
     world.get_mut::<Components<Color>>().unwrap().remove(apple);
-```
+#```
 
 Of course, this works inside of Systems too, since you have Components<Color>
 as a parameter!
@@ -484,18 +484,18 @@ Removing an Entity
 Also simple!
 Use:
 
-```
+#```
     world.get_mut::<Entities>().unwrap().kill(apple);
-```
+#```
 
 However, it is important to know that removing an Entity using kill(entity) will
 NOT delete its Components that are in the Components<T> Resources.
 
 This can be done automatically by using the world.maintain() function:
 
-```
+#```
     world.maintain();
-```
+#```
 
 It is recommended to run world.maintain() after using
 dispatcher.run_seq(&mut world), as this ensures everything is cleaned up!
@@ -518,7 +518,7 @@ Full Code
 --------------------------------------------------------------------------------
 Here is the full code created in this tutorial:
 
-```
+#```
 use planck_ecs::*;
 
 #[derive(Debug, PartialEq)]
@@ -582,7 +582,7 @@ fn main() {
 
     world.maintain();
 }
-```
+#```
 
 Patreon rocket goes brrrrrrrrrrrr
 

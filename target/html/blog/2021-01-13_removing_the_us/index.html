@@ -6,6 +6,7 @@
         <title>Jojolepro.com</title>
         <meta charset=utf-8>
         <meta name=description content="A bunch of stuff and things!">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             body{
                 text-align:center;
@@ -19,6 +20,7 @@
             pre{
                 text-align:left;
                 display:inline-block;
+                width: 80ch;
             }
             img{
                 max-width:80ch;
@@ -51,8 +53,9 @@
         <br/>
         <article>
             <pre>
-Getting Rid of The US
-================================================================================
+
+
+<pre style="color: lime;">Getting Rid of The US</pre>
 Or that one time I tried living without access to servers in or owned by
 US-based companies.
 
@@ -60,8 +63,7 @@ We all know that the US has a lot of influence over the world. The same is true
 on the internet. As an experiment, I decided to add block all ip addresses from
 the US, as well as all ip addresses from companies based in the US.
 
-The Method
---------------------------------------------------------------------------------
+<pre style="color: magenta;">The Method</pre>
 I downloaded the major IP blocks allocated to the US from here:
 <a href='https://www.nirsoft.net/countryip/us.csv'>https://www.nirsoft.net/countryip/us.csv</a>
 
@@ -97,8 +99,7 @@ while IFS="" read -r range; do
 done &lt; ips
 ```
 
-First Observations
---------------------------------------------------------------------------------
+<pre style="color: magenta;">First Observations</pre>
 The first thing I observed after applying these changes was that discord, steam,
 github and duckduckgo were still all working.
 
@@ -116,8 +117,7 @@ Finally, I took the cloudflare ip addresses from here:
 <a href='https://www.cloudflare.com/ips/'>https://www.cloudflare.com/ips/</a>
 and removed them. This is the moment the internet broke.
 
-What Works?
---------------------------------------------------------------------------------
+<pre style="color: magenta;">What Works?</pre>
 
 My weather radar still works. This is expected as it fetches data from
 the Canadian government website, which host their things themselves.
@@ -180,8 +180,7 @@ Also, my work requires me to use github, which is already in the exclusion
 list.
 Ouch!
 
-Conclusion
-================================================================================
+<pre style="color: lime;">Conclusion</pre>
 Fun experiment, but not very useful except or practical at all.
             </pre>
         </article>

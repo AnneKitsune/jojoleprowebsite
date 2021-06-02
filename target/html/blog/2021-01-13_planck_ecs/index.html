@@ -6,6 +6,7 @@
         <title>Jojolepro.com</title>
         <meta charset=utf-8>
         <meta name=description content="A bunch of stuff and things!">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             body{
                 text-align:center;
@@ -19,6 +20,7 @@
             pre{
                 text-align:left;
                 display:inline-block;
+                width: 80ch;
             }
             img{
                 max-width:80ch;
@@ -51,16 +53,17 @@
         <br/>
         <article>
             <pre>
-Planck ECS: A Minimalistic Yet Performant Entity-Component-System Library
-================================================================================
+
+
+<pre style="color: lime;">Planck ECS: A Minimalistic Yet Performant Entity-Component-System Library</pre>
 <a href='https://github.com/jojolepro/planck_ecs'>https://github.com/jojolepro/planck_ecs</a>
 <a href='https://docs.rs/planck_ecs'>https://docs.rs/planck_ecs</a>
 
-+------------------------------------------------------------------------------+
+<pre style="color: magenta;">#```</pre>
 |       "Perfection is achieved, not when there is nothing more to add,        |
 |                but when there is nothing left to take away."                 |
-|                       - Antoine de Saint-Exupery, 1900                       |
-+------------------------------------------------------------------------------+
+<pre style="color: magenta;">|                       - Antoine de Saint-Exupery, 1900                       |</pre>
+<pre style="color: orange">
 
 If you already know what an ECS is, jump to the
 "Comparison With Other ECS" section.
@@ -82,8 +85,7 @@ Good!
 
 Now, let's cover the basics.
 
-The Basics
---------------------------------------------------------------------------------
+<pre style="color: magenta;">The Basics</pre>
 We have four main elements.
 
 - Entity: A "thing" that exists in the world. It may be a game character, 
@@ -100,8 +102,7 @@ thing, that is..)
 
 - System: An operation that transforms Entities, Components and Resources.
 
-Making It All Come Together
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Making It All Come Together</pre>
 Here's a quick example of how it looks conceptually:
 
 Entity 1:
@@ -127,8 +128,7 @@ System:
 We have a simple system that conditionally modifies the Position component
 of all entities having one.
 
-Extra Elements
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Extra Elements</pre>
 To make this all work together, we need some more concepts.
 
 First, the World.
@@ -164,8 +164,7 @@ accessing resources.
 To do this, Systems need to be built in a way that corresponds to what the
 Dispatcher can handle.
 
-Constraints On Systems
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Constraints On Systems</pre>
 These are the constraints that specify how systems may be built:
 
 1) Systems must take only references as arguments.
@@ -185,8 +184,7 @@ This constraint exists so that resources may be automatically created for you,
 as well as enforcing that any resource that might not exist is actually handled
 by the system without any issue.
 
-How It Actually Looks
---------------------------------------------------------------------------------
+<pre style="color: magenta;">How It Actually Looks</pre>
 Importing the library:
 ```
 use planck_ecs::*;
@@ -237,8 +235,7 @@ dispatcher.run_par(&amp;mut world).expect("Error in a system!");
 world.maintain();
 ```
 
-Joining Components
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Joining Components</pre>
 The last part of the puzzle: How to write the example system from earlier
 that modifies the position using the time?
 
@@ -280,8 +277,7 @@ fn position_update_if_time(time: &amp;Time, sizes: &amp;Components&lt;Size&gt;,
 }
 ```
 
-Comparison With Other ECS
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Comparison With Other ECS</pre>
 Let's have a quick and informal comparison with other Rust ECS libraries.
 
 First, performance: According to the last time we ran benchmarks, we were the
@@ -319,13 +315,11 @@ popular ECS libraries:
 
 The numbers speak for themselves.
 
-Licensing
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Licensing</pre>
 Published under CC0, Planck ECS is under the public domain and available for
 free!
 
-Conclusion
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Conclusion</pre>
 In conclusion, Planck ECS is not an innovative piece of software. It does
 the same thing that the community has been doing for years. It just does it in
 a better and more safe way.

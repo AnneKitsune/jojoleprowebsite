@@ -52,6 +52,9 @@ while read -r page; do
             sed "s/&/\&amp;/g" "../../src/$page" |
             sed "s/</\&lt;/g" |
             sed "s/>/\&gt;/g" |
+            awk 'BEGIN {lastline="";} /=====/ {lastline="<pre style=\"color: lime;\">" lastline "</pre>";} {if ($0 !~ /=====/) {print lastline; lastline=$0;}} END {print lastline;}' |
+            awk 'BEGIN {lastline="";} /-----/ {lastline="<pre style=\"color: magenta;\">" lastline "</pre>";} {if ($0 !~ /-----/) {print lastline; lastline=$0;}} END {print lastline;}' |
+            awk 'BEGIN {in_quote = false;} /^#```/ {if (in_quote) {print "</pre>";} else {print "<pre style=\"color: orange\">";} in_quote = !in_quote;} {print $0}' |
             sed '/^#```/d' |
 
             sed -E "s|([^=][^\'\"])(https[:]//[^ )]*)|\1<a href='\2'>\2</a>|g" |

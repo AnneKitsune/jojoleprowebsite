@@ -6,6 +6,7 @@
         <title>Jojolepro.com</title>
         <meta charset=utf-8>
         <meta name=description content="A bunch of stuff and things!">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             body{
                 text-align:center;
@@ -19,6 +20,7 @@
             pre{
                 text-align:left;
                 display:inline-block;
+                width: 80ch;
             }
             img{
                 max-width:80ch;
@@ -51,8 +53,9 @@
         <br/>
         <article>
             <pre>
-Writing Simple School Documents (Groff Articles)
-================================================================================
+
+
+<pre style="color: lime;">Writing Simple School Documents (Groff Articles)</pre>
 
 Hello there!
 Today, I will be teaching you how to write documents really quickly using tools
@@ -63,8 +66,7 @@ You are using linux... aren't you?
 Anyways, today I will be showing you the Groff tool using examples.
 Let's get started.
 
-Headers
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Headers</pre>
 
 Every good document starts with a header! Let's do this now.
 Create a file called "article.ms".
@@ -84,8 +86,7 @@ This is text in a paragraph.
 
 Pretty simple right?
 
-Getting the result
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Getting the result</pre>
 
 To generate a pdf from this, use the following command:
 
@@ -101,8 +102,7 @@ The -Tpdf option means that we want to output to be in pdf format.
 Last but not least, we specify our input file (article.ms).
 Finally, we redirect the output of groff into an actual file.
 
-Creating Headers With Multiple Levels
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Creating Headers With Multiple Levels</pre>
 
 Try the following:
 
@@ -118,8 +118,7 @@ Try the following:
 
 This should be self explanatory once you see the results. :)
 
-Creating Blocks Of Code
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Creating Blocks Of Code</pre>
 
 Sometimes, you want to insert text using a monospace font (constant width)
 that doesn't get formatted. For this, you can use the following:
@@ -138,8 +137,7 @@ Let's see what happens here:
 .ft    Changes the font back to normal.
 .DE    Ends the block, re-enabling automatic text formatting.
 
-Writing Mathematical Equations
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Writing Mathematical Equations</pre>
 
 For this, we will be using a macro package called "eqn".
 
@@ -155,8 +153,7 @@ $ groff -e -ms -Tpdf article.ms &gt; article.pdf
 
 Now, you should see a (kind of) pretty equation. :)
 
-Inline Mathematical Equations
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Inline Mathematical Equations</pre>
 
 Now, let's say that you want your equation to show up in the middle of a
 sentence. What you can do is set a "delimiter" which you will insert in your
@@ -174,8 +171,7 @@ blablabla...blabla $2*2=4$ blablabla...
 
 Voilà!
 
-Tables? Tables!!
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Tables? Tables!!</pre>
 
 Tables:
 
@@ -201,8 +197,7 @@ groff -t -e -ms -Tpdf article.ms &gt; article.pdf
 
 Boom! A pretty table. Flip all the tables!
 
-Including Images
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Including Images</pre>
 
 Last but not least, we will learn to include (postscript) images!
 
@@ -214,8 +209,7 @@ postscript file to a pdf. This is simpler than it sounds.
 
 groff -t -e -ms -Tps article.ms | ps2pdf - article.pdf
 
-Using Special Characters (éèëïù...)
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Using Special Characters (éèëïù...)</pre>
 
 Special characters will have a hard time using the default settings.
 Using the a preprocessor called preconv, we can fix this easily.
@@ -223,8 +217,7 @@ Simply add -k to our command and we are done! :)
 
 groff -t -e -k -ms -Tpdf article.ms &gt; article.pdf
 
-Going Further
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Going Further</pre>
 
 Sadly, the documentation is very sparse and its not obvious to go through it
 all.

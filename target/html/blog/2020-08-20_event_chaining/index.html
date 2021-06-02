@@ -6,6 +6,7 @@
         <title>Jojolepro.com</title>
         <meta charset=utf-8>
         <meta name=description content="A bunch of stuff and things!">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             body{
                 text-align:center;
@@ -19,6 +20,7 @@
             pre{
                 text-align:left;
                 display:inline-block;
+                width: 80ch;
             }
             img{
                 max-width:80ch;
@@ -51,13 +53,13 @@
         <br/>
         <article>
             <pre>
+
+
 Event Chaining as a Decoupling Method in Entity-Component-System
 Joël Lupien (Jojolepro, jojolepro@jojolepro.com)
-<a href='https://patreon.com/jojolepro'>https://patreon.com/jojolepro</a>
-================================================================================
+<pre style="color: lime;"><a href='https://patreon.com/jojolepro</pre>'>https://patreon.com/jojolepro</pre></a>
 
-Context
-================================================================================
+<pre style="color: lime;">Context</pre>
 
 In game engines, we often have a lot of dependencies between modules.
 For example, the user interface often depends on the renderer, window and
@@ -75,39 +77,33 @@ think of logical dependencies. A depends on B, thus A refers to B.As we
 have just seen however, it can cause problems of maintainability, because
 we have strong coupling.
 
-Reducing Coupling
-================================================================================
+<pre style="color: lime;">Reducing Coupling</pre>
 
 There are multiple ways to reduce coupling, depending on which paradigm
 you use.Here, I will be specifically exposing a way to reduce coupling in
 the context of an Entity Component System (ECS).
 
-Fundamentals
-================================================================================
+<pre style="color: lime;">Fundamentals</pre>
 
 First of all, let's see the building pieces that we have in a ECS.I will
 be using terminology from the Amethyst Game Engine, since this is what I am
 most familiar with.
 
-Entities
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Entities</pre>
 
 Entities are "units" of the game. Each player, item, user interface element,
 audio source, etc.. are entities.We will not discuss much about entities
 in this paper.
 
-Components
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Components</pre>
 
 Components are properties of entities. Again, we will not be discussing those.
 
-Resources
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Resources</pre>
 
 Resources are simple data that is stored inside of the ECS' context.
 
-Systems
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Systems</pre>
 
 Systems are what drives the changes in the game. They are functions that
 take data from the ECS context (resources and entity/components), perform
@@ -119,47 +115,40 @@ resources or components (whether they read or write to them).If a system
 writes to a resource or component, no other system can access this same
 resource or component at the same time (in parallel).
 
-Event Channels
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Event Channels</pre>
 
 Single writer/Multiple readers FIFO queues. Most data types can be inserted
 through those (they only need to be thread safe).You need a registered
 instance of ReaderId to read from them. ReaderId instances can be created by
 getting a mutable reference to an Event Channel and calling register_reader().
 
-Additional Terminology
-================================================================================
+<pre style="color: lime;">Additional Terminology</pre>
 
 Let's introduce distinct names depending on how those previous concepts are
 used to improve the clarity of this paper.
 
-Driver
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Driver</pre>
 
 A System used to "drive" the execution of another system, often through the
 use of Signals.
 
-Signal
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Signal</pre>
 
 A Signal is simply an event written in an Event Channel that has for only
 purpose to drive the execution of one or multiple Systems. If we look at it
 the opposite way, some System will look for Signals as a way to know if and
 what kind of work they need to do.
 
-Event Chaining
-================================================================================
+<pre style="color: lime;">Event Chaining</pre>
 
-What Are They?
---------------------------------------------------------------------------------
+<pre style="color: magenta;">What Are They?</pre>
 
 Very similar to the concept of message passing, event chains are a way to
 communicate between Systems.Simply put, you have one event that is created,
 which create a second event, which create a third event, which is then consumed
 (received) by a System.
 
-Compared to Message Passing.
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Compared to Message Passing.</pre>
 
 In traditional message passing, you often have some System A that sends a
 message to System B.We say that System A is "aware" of System B's existence.
@@ -173,8 +162,7 @@ to read from the Event Channel. The reason for this is so that we don't have
 a single place where all of the message buffers are and where every system
 tries to get a mutable reference (which would heavily reduce performance).
 
-How They Solve The Coupling Problem
-================================================================================
+<pre style="color: lime;">How They Solve The Coupling Problem</pre>
 
 If we continue with the example from the beginning, we can see a way to make
 the user interface unaware of the input system.
@@ -192,8 +180,7 @@ UiEvent::Clicked(label1_entity).
 
 <img src='./graph1.png'/>
 
-Drawbacks
-================================================================================
+<pre style="color: lime;">Drawbacks</pre>
 
 Of course, we have to talk about drawbacks. Let me preface this with
 the following: There is a performance cost. It is small, but it is there.
@@ -208,15 +195,13 @@ the last example, instead of the User Interface System looking each frame
 for the status of the input device(s), we now have this System running only
 when signals are present.
 
-Other usages
-================================================================================
+<pre style="color: lime;">Other usages</pre>
 
 We have seen how this concept of Event Chaining allows to decouple user
 interfaces from input handling.Now, what else can we apply it to?Well... a
 lot of things actually. Here are some examples:
 
-Asset Hot Reloading
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Asset Hot Reloading</pre>
 
 - A FileWatcher System creates a signal when a file is updated on disk.
 Watched files are configured through a resource, which could itself
@@ -236,8 +221,7 @@ the code of what depends on this data (the renderer's mesh to gpu loader).
 
 <img src='./graph2.png'/>
 
-Audio Processing
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Audio Processing</pre>
 
 - As described in the previous point, we have a system that can load files
 (including audio) and
@@ -249,8 +233,7 @@ to the audio data instead of copying the data into the Signal.
 - We have a AudioSink System that forwards the corresponding audio data into
 a raw audio sink.
 
-Additional Benefit: Configurability
-================================================================================
+<pre style="color: lime;">Additional Benefit: Configurability</pre>
 
 In this paper, I mentioned that Drivers can use configuration and context data
 from ECS Resources.This allows for a super easy way to configure complex
@@ -280,16 +263,14 @@ their character, saving both performance and code complexity.
 
 <img src='./graph3.png'/>
 
-Conclusion
-================================================================================
+<pre style="color: lime;">Conclusion</pre>
 
 In conclusion, Event Chains are a powerful and versatile tool to decouple
 logical dependencies between Systems. They add a bit of complexity and
 performance overhead, but they are well worth their cost in the context of
 a general game engine.
 
-General Recommendations
-================================================================================
+<pre style="color: lime;">General Recommendations</pre>
 
 For those who already worked with something similar to EventChannel and
 ReaderId, you might have noticed that there are issues when a System that
@@ -315,8 +296,7 @@ Here are some ideas of what to document:
 - The events that each System creates.
 - The signals that each System consumes.
 
-Supporting Me
-================================================================================
+<pre style="color: lime;">Supporting Me</pre>
 
 I released this for free/without limitations because I want to contribute
 to the greater good.

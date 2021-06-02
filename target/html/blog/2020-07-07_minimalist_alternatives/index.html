@@ -6,6 +6,7 @@
         <title>Jojolepro.com</title>
         <meta charset=utf-8>
         <meta name=description content="A bunch of stuff and things!">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             body{
                 text-align:center;
@@ -19,6 +20,7 @@
             pre{
                 text-align:left;
                 display:inline-block;
+                width: 80ch;
             }
             img{
                 max-width:80ch;
@@ -51,8 +53,9 @@
         <br/>
         <article>
             <pre>
-Minimalist Alternatives to Popular Applications
-================================================================================
+
+
+<pre style="color: lime;">Minimalist Alternatives to Popular Applications</pre>
 
 This blog post will go through some minimalist alternatives to popular
 applications. Most or all application mentionned here as alternatives run on
@@ -60,14 +63,12 @@ linux.
 
 Let's start!
 
-Calendar Applications/Google Calendar/Outlook Calendar
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Calendar Applications/Google Calendar/Outlook Calendar</pre>
 
 Calcurse is a beatiful program to manage your appointments, note the
 birthdays of everyone you know and keep track of what you have to do.
 
-Task Lists
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Task Lists</pre>
 
 I was using an application called TaskWarrior to keep track of my tasks.
 It is really good and I would recommend it to anyone that needs to track
@@ -85,8 +86,7 @@ If you need to keep a specific order in the tasks you do and need priority
 management, I would suggest using TaskWarrior. Otherwise, a text file is just
 fine.
 
-Drawing Graphs
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Drawing Graphs</pre>
 
 For graphs, I use graphviz, which is a collection of different programs that
 create slightly different graphs depending on your needs.
@@ -115,8 +115,7 @@ Of course, it works just fine to create a .png:
 
 neato -Tpng entity_model.gv -o entity_model.png
 
-Music Player/Spotify
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Music Player/Spotify</pre>
 
 I download all my music, usually from the artist's bandcamp if there's a
 download option.
@@ -127,8 +126,7 @@ desktop and cmus on my laptop.
 I don't know which one I prefer, but they got the job done: They play music and
 I'm not dependant on an external service.
 
-Video Player/Youtube
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Video Player/Youtube</pre>
 
 I use a combination of newsboat (a RSS/news reader), youtube-dl (downloads
 videos from youtube) and mpv OR mplayer (video players).
@@ -144,8 +142,7 @@ Here's an example of the ~/.newsboat/urls file I use:
 http://feeds.nature.com/nature/rss/current?format=xml
 <a href='https://www.youtube.com/feeds/videos.xml?channel_id=&lt;channel_id&gt;'>https://www.youtube.com/feeds/videos.xml?channel_id=&lt;channel_id&gt;</a>
 
-Emails/Gmail/Outlook
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Emails/Gmail/Outlook</pre>
 
 I use postfix + dovecot + spamassassin on a scaleway vps as a mailserver.
 I use neomutt as my mail client. (I intend to try aerc soon.)
@@ -153,15 +150,13 @@ I use neomutt as my mail client. (I intend to try aerc soon.)
 I would suggest using Luke Smith's mutt wizard program to set things up for
 you more easily.
 
-Powerpoints/Microsoft Office
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Powerpoints/Microsoft Office</pre>
 
 I don't actually have to create powerpoints, but if I did I would use
 suckless' sent program.
 You can find it on <a href='https://suckless.org'>https://suckless.org</a>
 
-Spreadsheets/Excel
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Spreadsheets/Excel</pre>
 
 My needs for spreadsheets is pretty low now that I'm mostly using plain text
 files instead.
@@ -171,25 +166,21 @@ libreoffice's calc for complex usages involving graphs.
 
 I should learn gnuplot soon *thinking*.
 
-Image Viewer
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Image Viewer</pre>
 
 If using a windows manager: sxiv
 If not: fbv (a framebuffer image viewer)
 
-Pdf Reader
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Pdf Reader</pre>
 
 If using a windows manager: zathura
 If not: fbpdf
 
-Text Editor/Code Editor/VS Code/IntelliJ
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Text Editor/Code Editor/VS Code/IntelliJ</pre>
 
 neovim all the way. Sorry emacs users ;_;
 
-Password Manager/KeepassX
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Password Manager/KeepassX</pre>
 
 For a password manager with a graphical interface, KeepassX does the job
 very well.
@@ -197,20 +188,17 @@ very well.
 Recently I switched to an application called pash, written by Dylan Araps.
 It is very to use and runs in the terminal.
 
-Terminal Emulator
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Terminal Emulator</pre>
 
 Suckless Terminal (st). Available on <a href='https://suckless.org'>https://suckless.org</a>
 I only use the alpha patch to see my desktop background.
 
-Disk Space Explorer
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Disk Space Explorer</pre>
 
 ncdu exploring a lot of different folders, du -sh (ships with linux) to get
 the size of some specific folders.
 
-Window Manager
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Window Manager</pre>
 
 dwm on my desktop. Also available on the suckless website. :&gt;
 
@@ -219,8 +207,7 @@ for a framebuffer-based setup. I'm running tmux inside of a fbpad instance
 and use framebuffer applications (as listed earlier in this post) to view
 images/pdfs/videos.
 
-Bookmark Manager
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Bookmark Manager</pre>
 
 A text file is really all you need, to be honest. I tried spreadsheets,
 buku, the firefox built-in bookmark manager, but in the end nothing was as
@@ -237,13 +224,11 @@ wget -e robots=off -r --level=0 -nc -np &lt;website url&gt;
 For those website that it makes no sense to scrape (like news website), I will
 use newsboat to keep track of it.
 
-Background Image Changer
---------------------------------------------------------------------------------
+<pre style="color: magenta;">Background Image Changer</pre>
 
 feh --bg-scale &lt;image.png&gt;
 
-Conclusion
-================================================================================
+<pre style="color: lime;">Conclusion</pre>
 
 If you look hard enough, there's very often a simpler way of doing the things
 you do.
