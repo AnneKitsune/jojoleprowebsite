@@ -1,0 +1,36 @@
+# Jojolepro
+=> blog Blog
+=> projects Projects
+=> quotes Quotes
+=> https://github.com/jojolepro/ GitHub
+=> https://git.jojolepro.com Archives
+
+
+
+## Designing Minimal: Or how to complete projects
+In this blog post, I will give you a method that will allow you to quickly
+complete projects. Ready? Go!
+
+### Define what complete means!
+You can't complete a project if you don't know when to call it complete.
+Make a list of requirements where once they are all reached, the project is
+completed.
+
+### Design small!
+Big projects are often just a collection of smaller projects glued together.
+Often, people will keep those projects in the same repository.
+The issue with this is it becomes hard to reason about which sub-project is
+completed and what are the missing requirements for the others.
+
+For this reason, split up your projects into *small and separated* projects that
+have a clear *list of requirements for completion*.
+
+An added benefit is that you avoid feature creep, where more and more features
+get added and the project can never "be completed".
+
+## Conclusion
+If you want to complete projects, split it into smaller projects that each have
+a clear end goal.
+
+(C) Joël Lupien 2020-2021
+=>/blog/2021-07-01_designing_minimal/index.txt View page source

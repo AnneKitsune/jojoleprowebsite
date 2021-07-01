@@ -6,6 +6,10 @@
 <link>https://www.jojolepro.com</link>
 <atom:link href="https://www.jojolepro.com/blog/blog.xml" rel="self" type="application/rss+xml"/>
 <item>
+<title>Designing Minimal: Or how to complete projects</title>
+<link>https://www.jojolepro.com/blog/2021-07-01_designing_minimal</link>
+</item>
+<item>
 <title>Getting Started with ECS using Planck ECS</title>
 <link>https://www.jojolepro.com/blog/2021-06-01_getting_started_with_ecs</link>
 </item>
