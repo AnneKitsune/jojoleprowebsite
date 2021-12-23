@@ -6,6 +6,10 @@
 <link>https://www.jojolepro.com</link>
 <atom:link href="https://www.jojolepro.com/blog/blog.xml" rel="self" type="application/rss+xml"/>
 <item>
+<title>Rust, Zig, C and Indecision</title>
+<link>https://www.jojolepro.com/blog/2021-12-23_rust_zig_c</link>
+</item>
+<item>
 <title>Opening Myself Publicly</title>
 <link>https://www.jojolepro.com/blog/2021-12-23_opening_myself_publicly</link>
 </item>

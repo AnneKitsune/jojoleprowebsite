@@ -1,0 +1,241 @@
+Rust, Zig, C and why it is hard choosing a programming language.
+================================================================================
+I have been struggling to choose which language to use for my projects for a
+while.
+
+Technical Background
+--------------------------------------------------------------------------------
+I started with C, 8 years ago, before quickly switching to Java instead.
+Pointers and weird string formatting incantations were not for me at the time.
+
+Eventually, I moved to Scala, which was a "Better Java with Functional
+Programming". It delivered that. Less boilerplate, more concise code, less
+mistakes. At the time, I was working on a game engine. I was not that far into
+the project, only a couple months in. (ok, I guess I was pretty far >.>)
+
+What Scala didn't give was speed. The engine was pressuring the garbage
+collector and causing freezes. At the time, that was using the Java 1.7's
+virtual machine. I assume it's better now, but a garbage collector won't be
+faster than non garbage collected memory in almost all cases.
+
+Following that, I moved to Rust after learning about the Amethyst Engine
+which was still just starting out. I learned the language by reading the code
+and quickly skimming through the official documentation.
+
+I used that for a few years and it was mostly an improvement.
+The code was running faster. However, writing code became slower.
+After all, it is logical that having more control over what happens requires
+more work on the programmer's part specify what should happen. The exception to
+this is when there are defaults which you can override.
+
+Anyway, eventually, during school, I did a couple hours of C for some homeworks.
+Learned Zig in my free time by reading the short (nice!) and incomplete
+(less nice!) documentation and by porting some Rust projects to Zig.
+
+Eventually, the failure of getting donations to continue making FOSS programs
+and working on Amethyst led me to job hunt. Beenox was the first serious
+reply I got. The issue was that they use c++.
+
+So I did what every sane person would do: I learned c++ in two days, did the
+coding interview and passed easily. I still find this hilarious. :D
+
+Even funnier is that I actually spend all my days writing C code in .cpp files.
+So I'm actually a C programmer 8 hours per weekday.
+
+I think all that background makes me somewhat well positioned to give my
+thoughts on the ups and downs of the different languages from a "technical"
+perspective.
+
+Philosophical Background
+--------------------------------------------------------------------------------
+This part is way more weird than the last.
+
+I started, 8 years ago, wanting to make my own games because I didn't like
+design decisions of... basically all the games I played.
+
+My goal was to copy game general ideas and do it my own way.
+
+Later, I became more ambitious and wanted to do a "Simulate as much as possible
+of the world while being super duper hyper realistic" type of game.
+If you know anything about me, you'd instantly know that I won't work on it more
+than a week before giving up.
+
+But, this does give an example of the mindset I was in: big dreams and big
+complex projects.
+
+Finally, I slowly "progressed" to my current phase: simplicity.
+I try to take the core essence of games I like, create them in constrained
+environments (like the terminal) and build an enjoyable experience.
+
+Now, I care (and waste time thinking) about if using ncurses is worth the extra
+lines of codes instead of using ansi codes directly.
+
+That's weird, and a waste of time, and I know it. Please send help.
+
+Comparison, finally.
+--------------------------------------------------------------------------------
+ANYWAY, now the part you actually wanted to read!
+
+Here are my thoughts:
+
+C compilers are a must have on any linux or bsd system used for development.
+There's a lot of C compilers and having diversity and standards is nice.
+That's it for the upsides of C.
+
+As for the downsides, it's annoying to crosscompile, extremely error prone and
+verbose as hell. Don't get me started on weak typing, error handling or the
+complexity of making simple macros not explode at the usage point.
+
+Now for Rust, it's a really good improvement over C.
+No need to manage memory but also no garbage compiler slowing everything down.
+No need for header files. Strong typing. "Dangerous" operations gated behind
+the unsafe keyword. An awesome pakag manager. A ton of community libraries.
+Abstractions that don't slow (or just a tiiiiny bit) the program.
+
+As for the bad, my main complaint is the complexity and verbosity.
+Also, it has only one very complex compiler and I doubt anyone will try to
+write a new Rust compiler before a while considering the complexity of the
+task.
+I won't actually complain about the fact I hit 75 compiler errors per hour on
+average. I prefer to be warned that I do dumb code before I actually run it.
+
+The verbosity, however, really wastes my time. I understand the design
+decisions they had to take, but I'm not sure I agree with them.
+For example, look at the following piece of code:
+```
+#[derive(Clone, Default, Hash, Eq, PartialEq, Debug)]
+pub struct MyStruct<T> {
+    pub a: T,
+}
+impl<T> MyStruct<T> {
+    // Yes, I know derive-new exists. ;)
+    pub fn new(a: T) -> Self {
+        Self {
+            a
+        }
+    }
+}
+```
+
+For comparison, the equivalent piece of code in Scala looks like this
+(probably wrong, but close enough. I have not touched Scala in years):
+```
+public case class MyClass<T>(a: T)
+```
+
+That's what I mean by verbose. In the rust version, I had to specify:
+- MyStruct + Self 4x
+- T generic 5x
+- a field 3x
+- a long derive which you really want to be using in libraries on most structs.
+
+I'm really good at designing data structures from use cases I have, so
+the main limiting factor here is typing speed.
+Alternatively, the limiting factor is the amount of time I want to spend
+writing neovim/kakoune macros and trying to remember them.
+
+Also, maintenance time goes through the roof when you want to do something
+as simple as adding a field or a generic. It scales really fast.
+
+Specifying generic traits is also a big source of verbosity.
+There's this thing called "trait bound propagation".
+The basic idea is that if you have a generic struct or function requiring
+a generic implementing one or more trait, everything depending or using that
+struct or function has to also specify those traits.
+```
+pub struct World<T: Send+Sync+'static> {
+    pub resources: HashMap<TypeId, T>,
+}
+impl<T: Send+Sync+'static> World {...}
+
+// ...
+
+fn add_resource_to_world<T: Send+Sync+'static>(resource: T, 
+    world: &mut World<T>) {...}
+```
+
+That example is pretty dumb and doesn't make sense, but it shows the syntax.
+If you want a better example, look at the amethyst_rhusics crate which makes
+extensive use of generics and traits.
+
+As for complexity, I mostly have issue with the two macro systems:
+macro-by-example and procedural macros.
+
+I won't go into details. In short, macro-by-example makes it really hard
+to do loops over tokens, require advanced concepts like a "tt muncher".
+Also it doesn't support inspecting the types of parameters passed to it, which
+heavily limit how useful it is.
+
+Procedural macros, on the other hand, sometimes allow inspecting types.
+But that requires actually using a derive on every type you care about, which
+is once again super verbose and not even possible in all cases.
+Also, writing procedural macros is verbose to start with.
+
+Don't let my complaints discourage you from using Rust, it's a great language.
+I just happen to have used it a lot, so I have a lot to say compared to the
+two other languages I talk about here, which I used much less.
+
+Now, let's talk about Zig. I consider it to be in the middle between C and
+Rust.
+
+It has more safety than C through stronger types, but not as much as Rust's
+memory safety features. It's community is much smaller than both languages,
+but considering this is a younger language trying to fit in a place already
+occupied by other languages, it is to be expected.
+
+Types are more enjoyable to work with, but also somewhat less reliable than
+Rust's. Types are just values that exist strictly at compile time, the
+same way that a integer exists at runtime and can be interacted with.
+
+There's no special syntax for types, so interacting with them is done the
+same way as you would interact with regular run time code.
+
+However, that also means that types are "duct-taped". You cannot specify
+traits that you want the generic to have on the function signature.
+However, you can create a compile time assertion verifying if the type
+provided does implement the function that you need.
+
+That's not ideal since two types can implement functions with the same
+name that actually have different meanings. I guess that's more of a designer
+issue however.
+
+There's also the annoyance that instead of the following Rust code:
+```
+fn add<A: Add<B>, B>(a: A, b: B) -> A {
+    a + b
+}
+```
+You have to write code like this in Zig:
+```
+fn add(a: anytype, b: anytype) {
+    if (std.meta.is_numeric_type(@TypeOf(a))) {
+        return a + b; // will complain when you compile if it can't be done
+    } else {
+        // will complain when you compile if a doesn't have the .add function
+        // or if it cannot be applied to b.
+        return a.add(b);
+    }
+}
+```
+
+That's both nice and not nice. Nice because it's easy to use for things
+other than + and .add. Not nice because when you have + and .add, you need
+extra checks. Also not nice because the errors quickly get confusing as the
+complexity and number of functions you require grows.
+
+Another thing that is nice with Zig is the cross-compilation.
+I have played with it a bit and hit less issues that I thought I would.
+
+Conclusion..?
+--------------------------------------------------------------------------------
+I don't have one.
+Sorry. :D
+
+I know I want to avoid C when possible, but I have not decided between Rust,
+Zig, or another of the upcoming languages.
+
+I'm conflicted between having more things already done for me, or having a
+harder time using a language that is nicer (because it lacks documentation and 
+community).
+
+Until we meet again, baiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii.
