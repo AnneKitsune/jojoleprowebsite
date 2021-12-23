@@ -1,7 +1,7 @@
 # Jojolepro
-=> blog Blog
-=> projects Projects
-=> quotes Quotes
+=> blog/index.gmi Blog
+=> projects/index.gmi Projects
+=> quotes/index.gmi Quotes
 => https://github.com/jojolepro/ GitHub
 => https://git.jojolepro.com Archives
 
@@ -17,6 +17,9 @@ The most common addiction in the world is the draw of comfort. It wrecks
 dreams and breaks people.
 2020-08-23:
 Is prostitution a day job?
+2020-08-09:
+it's probably canadian megabits
+wayment :D
 2020-06-18:
 dude we need to give birth
 2020-05-10:

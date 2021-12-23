@@ -124,13 +124,13 @@ while read -r page; do
             printf '%s\n' "CC $page"
         ;;
 
-        #*.html)
-        #    cat "../../src/$page" |
-        #    sed '/%%CONTENT%%/r /dev/stdin' /tmp/template.html |
-        #    sed '/%%CONTENT%%/d' > "${page%%.html}.html"
+        *.gmi)
+            cat "../../src/$page" |
+            sed '/%%CONTENT%%/r /dev/stdin' /tmp/template.gmi |
+            sed '/%%CONTENT%%/d' > "${page%%.gmi}.gmi"
 
-        #    printf '%s\n' "CC $page"
-        #;;
+            printf '%s\n' "CC $page"
+        ;;
 
         # Copy over any images or non-txt files.
         *)

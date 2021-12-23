@@ -1,7 +1,7 @@
 # Jojolepro
-=> blog Blog
-=> projects Projects
-=> quotes Quotes
+=> blog/index.gmi Blog
+=> projects/index.gmi Projects
+=> quotes/index.gmi Quotes
 => https://github.com/jojolepro/ GitHub
 => https://git.jojolepro.com Archives
 
