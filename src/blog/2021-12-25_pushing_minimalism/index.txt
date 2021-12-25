@@ -1,0 +1,411 @@
+Pushing Minimalism
+================================================================================
+Today, I will share the current state of the computer I'm using.
+There's good things and also bad things, as well as ideas to improve on the
+bad things.
+
+Let's dive in!
+
+Linux
+--------------------------------------------------------------------------------
+Without any surprise, I'm still using linux. You cannot have a minimal setup
+when you use WindOS (windows) or Openly Sarcasm eXclusive.
+
+I'm interested in BSD and other kernels, but I find that the ones I'm aware of
+(BSD and redox) are trying to be both kernels and distributions at the same
+time.
+
+I don't want a rendering server or a full desktop packaged with the kernel.
+I don't want packages to be centralized in the same repository as the kernel.
+
+There might be a kernel I'm not aware of that corresponds more to what I'm
+looking for. If you think there is, feel free to email me at
+jojolepro [at] jojolepro [dot] com.
+
+Through the rest of this post, you'll see that while my use cases are limited
+in depth, there's a lot of them.
+
+Distribution
+--------------------------------------------------------------------------------
+I'm using wyverkiss, a fork of kiss linux.
+
+My primary metric for complexity is the total number of lines of code needed to
+run my system. I try to minimize the number of lines of code while still
+being able to do everything I need to do.
+
+As such, wyverkiss made a lot of sense:
+- I can compile the kernel linux with just the things I need.
+- There's no GCC or other gnu utilities, which tend to be absolutely massive.
+- The package manager is simple but also good enough for everything I need.
+- Creating packages is pretty fast and only involves plain text files.
+- Modifying packages is even faster.
+- I don't use that many programs, so it would be possible for me to maintain
+  most of the packages myself.
+
+Display Server
+--------------------------------------------------------------------------------
+I don't have one. I'm running everything in the linux console.
+
+Disk Encryption
+--------------------------------------------------------------------------------
+That's one of my main requirements: my data partition has to be encrypted.
+I do not care about the root partition being unencrypted.
+
+For this, I use cryptsetup. This is not a minimal program by any means,
+especially since it requires lvm2, but I'm not aware of another way.
+
+Mail
+--------------------------------------------------------------------------------
+I use aerc-git. It does the job fine.
+
+Multiplexer
+--------------------------------------------------------------------------------
+I'm using tmux. It's a must have for a terminal-only system.
+Technically it would be feasible to use the terminal without and use
+C-z, fg and bg, but that sounds very inconvenient.
+
+Gemini Browser
+--------------------------------------------------------------------------------
+I use amfora to browse gemini websites.
+I like the colors and how easy it is to use.
+
+Recording
+--------------------------------------------------------------------------------
+I have asciinema installed, but I never actually used it outside of quick
+tests.
+
+Core Utils
+--------------------------------------------------------------------------------
+Busybox is installed by default, has everything I need and is reasonnable with
+the number of lines of code.
+
+I might try suckless sbase one day, but I'm afraid most package build scripts
+or the init scripts will break due to missing options.
+
+Music Player
+--------------------------------------------------------------------------------
+I use cmus. It has almost no dependencies and works just fine.
+
+Boot Manager
+--------------------------------------------------------------------------------
+Simply using efibootmgr to edit the efi boot table directly.
+
+FZF
+--------------------------------------------------------------------------------
+I use fzf in some scripts, it's convenient.
+
+Images
+--------------------------------------------------------------------------------
+I don't currently have one. In my previous kiss linux install, I used
+fbi for images and fbv for pdfs. However, I'm more strict with this
+installation on what dependencies I want to avoid.
+
+For images, I'm considering the option of converting my .png and .jpg into
+farbfeld files (.ff), compressing them with gzip and writing a program to 
+view .ff files in the framebuffer.
+
+For pdfs, I don't have a good solution yet.
+One solution would be to convert pdfs into .ff on my data server.
+Another would be to install fbv and the ton of dependencies required to render
+pdfs on the framebuffer, then just look at pdfs.
+Finally, I could convert pdfs into a less complex format, like postscript, to
+maintain text quality.
+
+None of those solutions are ideal and it's not clear which one is best.
+I guess I really like overthinking things :)
+
+Videos
+--------------------------------------------------------------------------------
+I'm currently using mplayer. As far as I know, it's the only video players
+supporting playing .mp4 into the framebuffer and outputting sound directly to
+alsa without having a billion dependencies. It has the ffmpeg code checked out
+into the repository, however.
+
+Build System
+--------------------------------------------------------------------------------
+GNU make is installed. I would have used the provided bsd make if I could, but
+lots of packages break because bsd and gnu use two different and incompatible
+syntax for if statements.
+
+There's also rust's build system: cargo.
+There's also zig's build system.
+
+No cmake, no autogen, no ninja.
+
+Shell
+--------------------------------------------------------------------------------
+I use the provided /bin/sh for now.
+
+Text Editor
+--------------------------------------------------------------------------------
+I used to use neovim. Now I'm using kakoune. It has less dependencies and
+does the job fine for most things. I have not yet configured it to use language
+servers or to display programming errors inline; That's something I plan on
+doing soon.
+
+Most of the daily editing I do is in plain text files, however.
+
+File Management
+--------------------------------------------------------------------------------
+I use git.
+I did try fossil for a while but didn't really like the approach of having
+everything bundled into one big program.
+As for more minimal programs doing the same thing as git, I don't currently
+see a point in moving to those. I'll need git anyway for the package manager and
+to interact with the rest of the world.
+
+Configurations Management
+--------------------------------------------------------------------------------
+All my configurations are in a folder under ~/share/config/
+In there, there's a setup.sh script which will symlink the config files to their
+proper location.
+
+Keyboard Layout
+--------------------------------------------------------------------------------
+I use a slightly modified version of kbd to change my keyboard layout.
+Recently, I have noticed that there's a program doing something similar in
+busybox's repository. I'll have to look at that.
+
+LLVM
+--------------------------------------------------------------------------------
+Wyverkiss is based on clang, which is based on LLVM, so that's installed by
+default.
+
+It is a big dependency, but I require it because my preferred programming
+languages are rust and zig, both depending on LLVM.
+Zig also depends on clang to compile C code.
+
+Finally, a C compiler is necessary to compile most programs. Even if all
+programs were written in something else (self hosted zig for example), the linux
+kernel would still need to be compiled using C.
+
+Man Pages
+--------------------------------------------------------------------------------
+I use mandoc. I haven't really looked into man page viewers or alternatives.
+Maybe it would be nice to convert man pages to plain text eventually and
+use fzf (or just find, grep or rg) to find what you need.
+
+I used to write documents using groff, but nowadays I write everything in plain
+text files. Technically groff isn't installed on this system, but I assume it
+is packaged inside of mandoc.
+
+Also, I have scdoc (man page generator) installed as a build dependency of
+aerc. It is very small, but I would still like to remove it since there's only
+one program using it.
+
+Rust
+--------------------------------------------------------------------------------
+Rust is massive. It requires LLVM and sqlite and python and pkgconf and xz
+and zlib and openssl and curl and cmake.
+
+Some of these can be uninstalled after building rust (cmake for example), but
+that's still a bit annoying to have to install build dependencies and then
+remove them.
+
+Video Downloader
+--------------------------------------------------------------------------------
+I use youtube-dl to download videos I find on my phone.
+I have been considering returning to rss feeds to find youtube videos, but
+more and more I'm instead watching videos that I downloaded in batches on my
+file server using torrents instead.
+
+For anime, I currently use ani-cli to download videos that I found using
+my phone.
+
+Web Browser
+--------------------------------------------------------------------------------
+I don't have one installed.
+Terminal web browsers are way too limited. Even thing like browsh and
+framebuffer browser supporting javascript can't run the websites I need to use
+(like accessing my bank account).
+
+I just use my phone as my web browser. It's far from ideal and I really wish
+I didn't have to. I do have some plans to download the data sources I care about
+the most to my file server and doing searches through that instead.
+
+For example, getting all stackoverflow questions and answers. Wikipedia in
+plain text. Arch, gentoo, LFS and other wikis.
+
+Maybe even linux mailing lists for when I have issues with the linux kernel.
+
+I have experience in hoarding websites, but not so much in keeping them up
+to date and searchable. That will be something I spend a lot of time improving
+over the years.
+
+Counting Lines of Code
+--------------------------------------------------------------------------------
+I use tokei. I'm aware of other programs like cloc and the simple wc -l, but
+I like tokei. Also it's written in rust and I already have it installed.
+
+Managing Tasks
+--------------------------------------------------------------------------------
+I use a single text file, one task per line, organized by project.
+
+Calendar
+--------------------------------------------------------------------------------
+I use calcurse, but right now it segfaults (probably because I'm using
+bsd-curses instead of ncurses.)
+I'll fix it, eventually.
+
+Calculator
+--------------------------------------------------------------------------------
+I use bc right now, but I really want to reinstall libqalculate. It's an
+awesome calculator and I miss it.
+
+Communicating
+--------------------------------------------------------------------------------
+Right now I only have emails.
+I'm considering the option of installing an IRC client.
+I'm also installing ejabberd on a server and considering installing profanity.
+
+Whether I want to keep my instant messaging communications located only on my
+phone or if I want to bring them back to the desktop is an open question for
+now.
+
+On my phone I use discord. I'm currently testing xmpp clients and servers.
+I highly doubt I'll be able to make the people I care about move to that,
+however.
+
+File Browser
+--------------------------------------------------------------------------------
+I use the core utils commands ls, cd, mv, cp, rm and sometimes rsync.
+Find is also useful from time to time.
+
+I'm not sure I would gain much by using a terminal file browser.
+Anyway, I like having the exact same way of manipulating files between my
+desktop and the three servers I'm running.
+
+Video Editing
+--------------------------------------------------------------------------------
+I don't currently edit videos.
+I like watching videos and I used to create some, but I don't really need to do
+that at all currently.
+
+If I was playing games, I could be interested in making videos, but I don't
+really do that anymore.
+
+If I wanted to give information, I would do it by text. In some very
+specific contexts, I might add a picture if it really helps with comprehension.
+
+Audio Editing/DAW
+--------------------------------------------------------------------------------
+I do still want to create music.
+I'm not aware of any decent digital audio workstation that can run in a
+terminal however.
+
+I'm also not familiar enough with alsa to know if I would need to install a
+sound server like jack or pipewire or if I could do something without them.
+
+I'm also not sure if I would prefer a DAW or using individual programs to
+manipulate individual audio files, before combining them into the final
+file at the end.
+
+DAWs are hard to customize and automate.
+Using individual programs could make it very hard to do things like live
+monitoring your changes.
+
+In any case, I think that your ears (and a good enough audio output device)
+should be enough to evaluate your music without the need for programs like
+graphical equalizers and spectrometers.
+
+There's still a lot of open questions here. I'm interested in knowing your
+thoughts! Shoot me an email. :)
+
+Languages
+--------------------------------------------------------------------------------
+Languages are big contributors to lines of code.
+The following languages are installed on my system:
+- shell
+- C
+- C++
+- go
+- rust
+- zig
+- python
+- groff (mandoc and manpages)
+- flex and byacc, if you want to count those.
+- make
+
+What I Like
+--------------------------------------------------------------------------------
+There's no distractions in this setup.
+No muscle memory to open a browser and go on youtube.
+No notifications of any kind.
+Almost no games (I'll talk about this more in a following post.)
+
+This makes me very bored when I'm at my computer for long periods of time.
+Good. That was exactly the goal when I setup the system this way.
+
+I started spending more time doing other things than being at my computer.
+When I am, I tend to be more productive (programming, writing the blog, looking
+at my task list) or to relax better (looking at anime without being distracted
+by messages as much).
+
+I also like that I spend less time looking at instant messages that I receive.
+I spend a significant amount of time doing that and replying. However, when
+I'm at my computer and since my messages are on my phone, I tend to forget to
+check my phone. That's a good thing, since I ultimately spend less time going
+back and forth between some task and talking to someone.
+
+Also, my phone battery lasts until the end of the day only if I don't look
+at it too much. If I use it too much, I'm forced to charge it and stop using
+it (I charge it in another room on purpose.)
+
+As for the computer itself, I really enjoy knowing how much of my system works.
+It's incredibly stable, boots in a second (if you don't count the bios
+firmware which takes ~5 seconds) and shuts down really fast.
+
+I only have to write a single password (the disk encryption key) and then
+I'm dropped directly into a shell with tmux running, logged in into my
+account without having to type my password.
+
+Since everything runs in the terminal, I can automate almost anything by
+writing quick shell scripts or aliases.
+
+I also spend a lot less time gaming (which is my primary coping mechanism
+for stress) and instead have to sit with my feelings until I process them.
+
+I can still distract myself with my computer in other ways that are less about
+coping and more about enjoying.
+
+Limitations
+--------------------------------------------------------------------------------
+Using my phone to talk to people is annoying. I keep typoing when using the
+small keyboard.
+
+Using my phone to browse the internet. Earlier in this post, I proposed ways to
+reduce that, but it is very clear that reducing browsing usage by more than
+75% would be hard and by 100% would be impossible in the modern world while
+continuing to do everything I want to be doing.
+
+Another limitation is that installing programs is hard. Most of the time, I have
+to package them myself. Often, they end up having dependencies they don't
+mention anywhere but are actually hard requirements and that I don't want on
+my system. There's also issues caused by wyverkiss changes.
+For example, cmus would segfault because I'm using netbsd-curses instead of
+ncurses and cmus was not always initializing curses (which apparently isn't
+an issue when using ncurses.)
+I suspect that my current issues running calcurse and C:DDA are caused by
+something similar, since I was able to run both of those on a regular kiss
+linux installation.
+
+Finally, I have an issue not related to the actual setup but with myself.
+The short story is that I'm always conflicted between doing big and complex
+projects and doing very small, manageable and perfect projects.
+I cannot do very complex things while on a minimal setup (raytracing 3d
+universe simulation anyone?)
+At the same time, I know the way my motivation works wouldn't allow me to
+actually do such a project. In the end, when I feel like doing a really big
+project, I forge myself to stay on the current setup until the feeling passes.
+I'll talk more about that in another post.
+
+Conclusion
+--------------------------------------------------------------------------------
+I really like this setup. I'm getting criticism and incomprehension often when
+I talk about it, but I'm convinced enough that it's better for me to be doing
+this than to continue doing what I was.
+
+If you have improvement ideas or comments, feel free to write me an email.
+jojolepro [at] jojolepro [dot] com
+
+Until then, baiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii!
