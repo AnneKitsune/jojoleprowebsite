@@ -1,11 +1,12 @@
 # Jojolepro
 => /blog/index.gmi Blog
 => /projects/index.gmi Projects
+=> /music/index.gmi Music
 => /quotes/index.gmi Quotes
 => https://github.com/jojolepro/ GitHub
 => https://git.jojolepro.com Archives
 
 %%CONTENT%%
 
-(C) Joël Lupien 2020-2021
+(CC0) Joël Lupien 2020-2022
 =>%%SOURCE%% View page source

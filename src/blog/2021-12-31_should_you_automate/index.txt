@@ -1,0 +1,34 @@
+Should you automate?
+================================================================================
+Most of the time, the answer is just yes.
+However, sometimes it's harder to know.
+
+Automation can have negative impacts on your mental health. Wait, I'm not here
+to talk about that.
+
+ANYWAY, here's a tool that will objectively~ decide for you if you should
+automate a task or not.
+
+Where to find it
+--------------------------------------------------------------------------------
+https://git.jojolepro.com/should_automate/
+
+It can be compiled using zig 0.9.0 with the following command:
+#```
+zig build run
+#```
+
+Alternatively, here's a linux executable weighting only 12KB:
+./should_automate.bin
+
+Usage
+--------------------------------------------------------------------------------
+#```
+./should_automate
+#```
+
+It will ask a few questions and report the time gained (positive) or lost
+(negative) over the next 1, 5, 10 and 25 years.
+
+In my opinion, if the number is over +20 hours saved in the first year, that's
+a definite "yes, you should really automate this task."

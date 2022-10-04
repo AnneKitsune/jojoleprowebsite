@@ -62,6 +62,7 @@ while read -r page; do
             sed -E "s|^(https[:]//[^ )]{2,71})([^ )]*)|<a href='\0'>\1</a>|g" |
 
             sed -E "s/^\.\/.*\.(png|jpg|svg)/<img src='\0'\/>/g" |
+            sed -E "s/^\.\/.*\.(bin|flac|mp3)/<a href='\0'>\0<\/a>/g" |
 
             sed '/%%CONTENT%%/r /dev/stdin' /tmp/template.html |
             sed '/%%CONTENT%%/d' |
@@ -111,7 +112,7 @@ while read -r page; do
 
             sed -E "s|^(https[:]//[^ )]{2,71})([^ )]*)|=>\0|g" |
 
-            sed -E "s/^\.\/.*\.(png|jpg|svg)/=>\0/g" |
+            sed -E "s/^\.\/.*\.(png|jpg|svg|bin|flac|mp3)/=>\0/g" |
 
             sed '/%%CONTENT%%/r /dev/stdin' /tmp/template.gmi |
             sed '/%%CONTENT%%/d' |
