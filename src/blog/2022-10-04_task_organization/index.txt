@@ -1,0 +1,38 @@
+Task Organization
+================================================================================
+I tried a lot of ways to organize my tasks over time.
+For a long time, I felt like I wasn't doing enough.
+Journaling helped with that but not with managing tasks. Also it was a bit
+inconvenient because I forgot what I did in the day from time to time.
+Here's the system that works best for me currently.
+
+Setup
+--------------------------------------------------------------------------------
+Have a single todo.md file.
+Have three headers:
+- Planned today
+- Done today
+- Backlog
+
+Process
+--------------------------------------------------------------------------------
+All tasks start in the backlog.
+In the morning, move some tasks from the backlog into planned today.
+As you go about your day and do tasks, move them into done today.
+At the end of the day, move everything still in planned today back into the
+backlog.
+Then, for each task in done today, read it, appreciate the work you did and
+delete the task.
+
+Bonus
+--------------------------------------------------------------------------------
+- Whenever a task seems too big or too frightening to start with, divide it
+into many small tasks.
+- If there are tasks you don't need to do and don't want to do, delete them.
+- Don't compare what you did today to what you did the previous day(s).
+Instead, appreciate the fact that you did more than zero.
+- Write as much as you can, even if they are really small tasks like
+taking a shower or taking a short walk outside. It's good for the mood! :)
+- Never try to "do everything" in the backlog. There will always be things
+to do. If you try to empty the backlog, you'll be less likely to divide
+big tasks into small ones since that appears to "fill" the backlog.

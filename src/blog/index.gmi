@@ -1,3 +1,4 @@
+=> 2022-10-04_task_organization/index.gmi Task Organization
 => 2021-12-31_should_you_automate/index.gmi Should You Automate?
 => 2021-12-25_pushing_minimalism/index.gmi Pushing Minimalism
 => 2021-12-23_rust_zig_c/index.gmi Rust, Zig, C and Indecision
