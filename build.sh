@@ -22,9 +22,11 @@ rss_end="</channel>
 item="<item>
 <title>{{title}}</title>
 <link>https://www.jojolepro.com/blog/{{link}}</link>
+<author><name>Jojolepro</name></author>
 </item>"
 
 echo "$rss" > src/blog/blog.xml
+echo "$rss" > src/blog/atom.xml
 
 cat src/blog/index.html | grep -v blog.xml | grep -vE "^$" |
 while read -r entry; do
@@ -36,6 +38,7 @@ while read -r entry; do
 done
 
 echo "$rss_end" >> src/blog/blog.xml
+echo "$rss_end" >> src/blog/atom.xml
 
 
 # HTML compilation
