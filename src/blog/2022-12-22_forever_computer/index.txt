@@ -1,0 +1,273 @@
+re: Forever Computer
+================================================================================
+Ploum started an interesting conversation on what a computer that would last
+a very long amount of time would look like.
+
+gemini://ploum.be/2022-12-03-reinventing-how-we-use-computers.gmi
+
+I have had some thoughts related to this too in the past and did some
+experimenting with kiss linux to see how far we can push minimalism before
+it becomes too limiting.
+
+I have also noticed a trend which might be applicable to humanity in general,
+which is that we almost always try to move forward: do more, faster, easier.
+People focusing on security and stability, those who take less risks, will be
+left behind.
+
+The question is: are you fine being left behind for some things?
+Are you fine doing plain old C programming when people are using rust and code
+generation tools? Are you fine being constrained to an environment that will
+feel slower and slower *compared to the alternatives*?
+
+For this blog post, I propose the following method:
+- Define the properties of a forever computer.
+- List out all my goals and for each determine if they can be done on a forever
+  computer or if an alternative is needed.
+- Come up with a list of hardware that fits the properties and remaining goals.
+
+Forever Computer Properties
+--------------------------------------------------------------------------------
+- Can last 25 to 50 years without breaking
+- Easy to repair when it breaks, which implies that there are spare parts and
+  the design is simple enough to be understood by most people
+- Long battery duration (12 hours at full cpu usage?)
+- Be light and small, so that it is easy to carry everywhere
+- Able to plug devices into it (keyboard, screen, ...)
+- Already equipped with a small screen and keyboard (which might be touch screen)
+  to be usable everywhere
+
+Goals and use cases
+--------------------------------------------------------------------------------
+Now for the complex part. Let's list all my use cases. *insert blob sweat emoji*
+
+- large data storage
+- game programming
+- 3d gaming
+- 2d graphical gaming
+- terminal gaming
+- tabletop gaming helper
+- emails
+- gemini browsing
+- web browsing (usually searching for information without knowing which website
+  will give me good results)
+- reading
+- writing blog and text files
+- todo list
+- watch videos, with subtitles
+- spaced repetition flash cards
+- view images
+- draw images
+- edit videos
+- listen to music
+- synthetise music
+- arrange music
+- compose music
+- develop AI
+- do/receive phone calls
+- video conference
+- send/receive text messages (either through cellular network or wifi)
+- use AI program to split songs into tracks
+- use VR for creative work and gaming
+- calendar with automatic event repeats
+- CI controller and agents
+- system virtualisation (qemu)
+- keyboard inputs methods (japanese)
+- calculator
+- 3d modelling
+- password manager (though it would be nice to only use ssh keys instead of
+  passwords...)
+- screen recorder
+- run software that interacts with hardware where drivers only work on windows
+- run software concurrently, for example with long running tasks
+- route audio from program to program in a somewhat arbitrary way
+- stores music or can access music on another system
+- connect/manage other machines through ssh
+- connect/manage other machines through windows remote desktop (rdesktop)
+- recipe storage and querying
+- inventory manager
+- use AI code generation
+- use git
+- use github (create pull requests, check issues, etc)
+- online banking
+
+Wew, that was a lot.
+It's quite clear that we can't have a forever computer that does all this
+currently: it would be huge and expensive!
+
+Let's assume that all use cases are important and cannot be deleted, and see
+how different things can/can't deal with them.
+
+Y = it can
+N = it cannot
+
+The Paper Sheet
+--------------------------------------------------------------------------------
+- N large data storage
+- N game programming
+- N 3d gaming
+- N 2d graphical gaming
+- N terminal gaming
+- Y tabletop gaming helper
+- N emails
+- N gemini browsing
+- N web browsing (usually searching for information without knowing which
+  website will give me good results)
+- Y reading
+- Y writing blog and text files
+- Y todo list
+- N watch videos, with subtitles
+- Y spaced repetition flash cards
+- Y view images
+- Y draw images
+- N edit videos
+- N listen to music
+- N synthetise music
+- N arrange music
+- Y compose music
+- N develop AI
+- N do/receive phone calls
+- N video conference
+- N send/receive text messages (either through cellular network or wifi)
+- N use AI program to split songs into tracks
+- N use VR for creative work and gaming
+- Y calendar with automatic event repeats
+- N CI controller and agents
+- N system virtualisation (qemu)
+- N keyboard inputs methods (japanese)
+- N calculator
+- N 3d modelling
+- Y password manager (though it would be nice to only use ssh keys instead of
+  passwords...)
+- N screen recorder
+- N run software that interacts with hardware where drivers only work on windows
+- N run software concurrently, for example with long running tasks
+- N route audio from program to program in a somewhat arbitrary way
+- N stores music or can access music on another system
+- N connect/manage other machines through ssh
+- N connect/manage other machines through windows remote desktop (rdesktop)
+- Y recipe storage and querying
+- Y inventory manager
+- N use AI code generation
+- N use git
+- N use github (create pull requests, check issues, etc)
+- N online banking
+
+12 Y
+35 N
+So paper can cover 25% of our use cases. Not too bad!
+
+Terminal Only Kiss Linux
+--------------------------------------------------------------------------------
+I have some experience using a terminal-only environment in 2022.
+Let's see how our many use cases that works for.
+
+- Y large data storage
+- Y/N game programming (depends what kind of games!)
+- N 3d gaming
+- N 2d graphical gaming
+- Y terminal gaming
+- Y tabletop gaming helper
+- Y emails
+- Y gemini browsing
+- Y/N web browsing (very hit or miss, lots of website break)
+- Y reading
+- Y writing blog and text files
+- Y todo list
+- Y watch videos, with subtitles
+- Y spaced repetition flash cards
+- Y view images
+- N draw images (except pixel art)
+- N edit videos
+- Y listen to music
+- Y synthetise music (but probably requires adapting software)
+- Y arrange music (but requires creating a terminal DAW)
+- Y compose music (but requires creating software)
+- N develop AI
+- N do/receive phone calls (might be possible but I don't know how)
+- N video conference
+- Y send/receive text messages (either through cellular network or wifi)
+- Y use AI program to split songs into tracks
+- N use VR for creative work and gaming
+- Y calendar with automatic event repeats
+- Y CI controller and agents
+- N system virtualisation (qemu)
+- Y keyboard inputs methods (but don't know how)
+- Y calculator
+- N 3d modelling
+- Y password manager (though it would be nice to only use ssh keys instead of
+  passwords...)
+- Y screen recorder
+- N run software that interacts with hardware where drivers only work on windows
+- Y run software concurrently, for example with long running tasks
+- Y route audio from program to program in a somewhat arbitrary way (but might
+  be missing a jack terminal frontend to do it)
+- Y stores music or can access music on another system
+- Y connect/manage other machines through ssh
+- N connect/manage other machines through windows remote desktop (rdesktop)
+- Y recipe storage and querying
+- Y inventory manager
+- Y use AI code generation (but not sure how, I don't use it yet)
+- Y use git
+- Y use github (there's cli tools for it)
+- N online banking
+
+34 Y
+15 N
+69% (nice) of use cases. Considering this is only using a terminal interface,
+it's impressive!
+
+If we add the ability to have a 2d interface, window manager and pointing
+device but no graphics card, 7 N becomes Y for a total of 83% use cases.
+
+What to do?
+--------------------------------------------------------------------------------
+We often say: "use the right tool for the job."
+Which we could also rewrite as "use the simplest tool that does the job just
+as well as other tools".
+But there's an issue with that: we lose convenience.
+
+Ever did construction and you need to go back and forth multiple times to grab
+different tools you forgot?
+Using the simplest tool for the job would mean walking around with a pen,
+notebook, simple computer and having a complex computer at home.
+How inconvenient! There's a reason phones have an integrated camera, it's
+to not walk around with 2 devices!
+
+My understanding of the forever computer is that we want to make most of our
+use cases portable: move them from our big laptops/big desktops into
+a single portable and convenient device. And we want that to have a long
+battery life and be future proof.
+This isn't going towards simplicity, it is the same idea as what we saw in the
+introduction: we are going forward, towards doing more and having more
+convenience.
+
+If you are ready to sacrifice use cases (as I did when I went full time on
+kiss linux for a while), what will happen when you get bored?
+The appeal of the new technologies is strong, because that's where all the
+new shiny toys are at. That's where most of the fun (and frustration) is at.
+
+And don't forget that we can't have it both ways. If we have both a forever
+computer and a complex computer for the remaining use cases, it will be
+extremely tempting to do everything on the complex computer. Why?
+Because it is convenient to do everything on the same device.
+
+Instead of starting to talk about hardware, I'll instead end this post on
+more personal questions.
+
+Are you ready to sacrifice use cases in the name of stability, security and
+simplicity?
+
+Are you ready to sacrifice convenience by using the simplest tool for the job?
+
+Are you fine with being left behind? Or do you prefer the attraction of the
+shiny new things?
+
+How much effort are you willing to put into a system where you will gain
+control and understanding, but lose on value (use cases solved by it)?
+
+Let us know your thoughts in the mailing list
+~lioploum/forevercomputer@list.sr.ht
+or by making a post on your own blog
+or by sending an email to jojolepro [at] jojolepro [dot] com
+
+Thanks you for your time, I hope this was an interesting read!
