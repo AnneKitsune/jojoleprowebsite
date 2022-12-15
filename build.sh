@@ -8,13 +8,18 @@ cp ./template.gmi /tmp/template.gmi
 # RSS compilation
 echo "Building RSS"
 
-rss='<?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+rss='<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
 <title>Jojolepro Blog</title>
 <description>The Blog of the Fockses!</description>
 <link>https://www.jojolepro.com</link>
 <atom:link href="https://www.jojolepro.com/blog/blog.xml" rel="self" type="application/rss+xml"/>'
+
+rss_gmi='<rss version="2.0">
+<channel>
+<title>Jojolepro Blog</title>
+<description>The Blog of the Fockses!</description>
+<link>gemini://www.jojolepro.com</link>'
 
 rss_end="</channel>
 </rss>"
@@ -25,20 +30,33 @@ item="<item>
 <author><name>Jojolepro</name></author>
 </item>"
 
-echo "$rss" > src/blog/blog.xml
-echo "$rss" > src/blog/atom.xml
+item_gmi="<item>
+<title>{{title}}</title>
+<link>gemini://www.jojolepro.com/blog/{{link}}/index.gmi</link>
+<author><name>Jojolepro</name></author>
+</item>"
 
+echo "$rss" > src/blog/blog.xml
 cat src/blog/index.html | grep -v blog.xml | grep -vE "^$" |
 while read -r entry; do
     title1="${entry##*\">}"
     title="${title1%%<*}"
-    link1="${entry##*=\"}"
-    link="${link1%%\"*}"
+    link1="${entry##*href=\"}"
+    link="${link1%%\">*}"
+    echo "aaa $link1"
+    echo "bbb $link"
     echo "$item" | sed "s/{{title}}/$title/" | sed "s/{{link}}/$link/" >> src/blog/blog.xml
 done
-
 echo "$rss_end" >> src/blog/blog.xml
-echo "$rss_end" >> src/blog/atom.xml
+
+echo "$rss_gmi" > src/blog/blog_gmi.xml
+cat src/blog/index.gmi | grep -v blog_gmi.xml | grep -vE "^$" |
+while read -r entry; do
+    link="$(echo "$entry" | cut -d' ' -f 2 | sed 's/\/index.gmi//')"
+    title="$(echo "$entry" | cut -d' ' -f 3-)"
+    echo "$item_gmi" | sed "s/{{title}}/$title/" | sed "s/{{link}}/$link/" >> src/blog/blog_gmi.xml
+done
+echo "$rss_end" >> src/blog/blog_gmi.xml
 
 
 # HTML compilation
