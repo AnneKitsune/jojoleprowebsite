@@ -163,3 +163,6 @@ while read -r page; do
     esac
 done
 
+echo "# Jojolepro" > blog/index_all.gmi
+cat ../../src/blog/index.gmi | head -n -2 >> blog/index_all.gmi
+
