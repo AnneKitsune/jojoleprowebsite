@@ -1,0 +1,82 @@
+Demucs 4.0.0 on Nix
+================================================================================
+Splitting tracks into their stems is fun!
+It's great for karaoke or to listen to little details you would not notice
+otherwise in your favorite songs.
+
+Want to use demucs to do that on Nix/NixOS? Follow along!
+
+Note: python programs have the fun tendency to break every month or so.
+This mini tutorial will become outdated extremely fast.
+
+nix-shell
+---------------------------------------------------------------------------------
+We'll use nix-shell to create an environment.
+Then, we'll use pip to install demucs.
+We'll fix an issue with LD not finding libc++.
+
+Ready? Go!
+Create a file called shell.nix (or whatever.)
+Paste the following (and read the comments if you want to understand).
+#```
+with import <nixpkgs> { };
+
+# Usage: python3 -m demucs -d cpu --mp3 <input.mp3>
+let
+  pythonPackages = python3Packages;
+in pkgs.mkShell rec {
+  name = "impurePythonEnv";
+  venvDir = "./.venv";
+  buildInputs = [
+    pythonPackages.python
+
+    # This executes some shell code to initialize a venv in $venvDir before
+    # dropping into the shell
+    pythonPackages.venvShellHook
+
+    # Those are dependencies that we would like to use from nixpkgs, which will
+    # add them to PYTHONPATH and thus make them accessible from within the venv.
+    pythonPackages.numpy
+    pythonPackages.requests
+
+    # In this particular example, in order to compile any binary extensions they may
+    # require, the Python modules listed in the hypothetical requirements.txt need
+    # the following packages to be installed locally:
+    openssl
+    git
+  ];
+
+  # Run this command, only after creating the virtual environment
+  postVenvCreation = ''
+    unset SOURCE_DATE_EPOCH
+    #pip install demucs
+    pip install 'demucs=4.0.0'
+  '';
+
+  # Now we can execute any commands within the virtual environment.
+  # This is optional and can be left out to run pip manually.
+  postShellHook = ''
+    LD_LIBRARY_PATH=${stdenv.cc.cc.lib}/lib/
+    # allow pip to install wheels
+    unset SOURCE_DATE_EPOCH
+  '';
+}
+#```
+
+Run
+#```
+nix-shell shell.nix
+#```
+
+If you are lucky, the install will complete without blowing up in your face.
+
+Using demucs
+---------------------------------------------------------------------------------
+I use the following command line to use the cpu version:
+#```
+python3 -m demucs -d cpu --mp3 <input_file.mp3>
+#```
+
+The stems will be in the folder separated/htdemucs/<song_name>/*.mp3
+
+Enjoy ~

@@ -4,8 +4,13 @@
 <description>The Blog of the Fockses!</description>
 <link>gemini://www.jojolepro.com</link>
 <item>
+<title>Demucs on Nix</title>
+<link>gemini://www.jojolepro.com/blog/2022-12-18_demucs_on_nixos/index.gmi</link>
+<author><name>Jojolepro</name></author>
+</item>
+<item>
 <title>re:Forever Computer</title>
-<link>gemini://www.jojolepro.com/blog/2022-12-22_forever_computer/index.gmi</link>
+<link>gemini://www.jojolepro.com/blog/2022-12-12_forever_computer/index.gmi</link>
 <author><name>Jojolepro</name></author>
 </item>
 <item>
